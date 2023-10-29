@@ -459,7 +459,7 @@ if($success_message1 != '') {
                                 <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
-                                        <del><?php echo LANG_VALUE_1; ?><?php echo $p_old_price; ?></del>
+                                    <small></small>  <i>  <del><?php echo LANG_VALUE_1; ?><?php echo $p_old_price; ?></del></i>
                                     <?php endif; ?> 
                                         <?php echo LANG_VALUE_1; ?><?php echo $p_current_price; ?>
                                 </span>

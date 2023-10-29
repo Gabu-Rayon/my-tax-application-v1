@@ -129,13 +129,13 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
+                                <?php echo LANG_VALUE_1; ?>  <?php echo $row_total_price; ?>
                             </td>
                         </tr>
                         <?php endfor; ?>           
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount"><?php echo LANG_VALUE_1; ?>   <?php echo $table_total_price; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
@@ -156,8 +156,12 @@ if(!isset($_SESSION['cart_p_id'])) {
                         }                        
                         ?>
                         <tr>
+                            <td colspan="7" class="total-text">Shipping Taxes:</td>
+                            <td class="total-amount"><?php echo LANG_VALUE_1; ?> 25</td>
+                        </tr>
+                        <tr>
                             <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
-                            <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td>
+                            <td class="total-amount"><?php echo LANG_VALUE_1; ?> <?php echo   $shipping_cost; ?></td>
                         </tr>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
@@ -165,7 +169,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $final_total; ?>
+                                <?php echo LANG_VALUE_1; ?>   <?php echo $final_total; ?>
                             </th>
                         </tr>
                     </table> 
@@ -215,7 +219,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_108; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_state']; ?></td>
+                                    <td><?php echo $_SESSION['customer']['cust_b_county']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_109; ?></td>
@@ -263,7 +267,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_108; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_s_state']; ?></td>
+                                    <td><?php echo $_SESSION['customer']['cust_s_county']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_109; ?></td>

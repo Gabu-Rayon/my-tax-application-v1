@@ -209,9 +209,7 @@ foreach ($result as $row)
                                             Out Of Stock
                                         </div>
                                     </div>
-                                <?php else: ?>
-                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> Add to Cart</a></p>
-                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Details</a></p>
+                                <?php else: ?><p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Details</a></p>
                                 <?php endif; ?>
                             </div>
                         </div>

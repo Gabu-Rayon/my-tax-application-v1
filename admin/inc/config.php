@@ -3,13 +3,13 @@
 ini_set('error_reporting', E_ALL);
 
 // Setting up the time zone
-date_default_timezone_set('America/Los_Angeles');
+// date_default_timezone_set('Kenya/Nairobi');
 
 // Host Name
 $dbhost = 'localhost';
 
 // Database Name
-$dbname = 'ecommerceweb';
+$dbname = 'my-tax-application-db';
 
 // Database Username
 $dbuser = 'root';

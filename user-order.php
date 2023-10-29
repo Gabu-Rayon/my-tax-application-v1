@@ -21,7 +21,7 @@ if(!isset($_SESSION['customer'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <?php require_once('customer-sidebar.php'); ?>
+                <?php require_once('user-sidebar.php'); ?>
             </div>
             <div class="col-md-12">
                 <div class="user-content">

@@ -176,7 +176,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                     <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?> 
                                                     <?php if($row['p_old_price'] != ''): ?>
                                                     <del>
-                                                        <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?>
+                                                      <small><i> <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?></i></small>
                                                     </del>
                                                     <?php endif; ?>
                                                 </h4>

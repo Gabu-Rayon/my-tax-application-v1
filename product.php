@@ -33,7 +33,7 @@ foreach($result as $row) {
     $ecat_id = $row['ecat_id'];
 }
 
-// Getting all categories name for breadcrumb
+// Getting All categories name for breadcrumb
 $statement = $pdo->prepare("SELECT
                         t1.ecat_id,
                         t1.ecat_name,

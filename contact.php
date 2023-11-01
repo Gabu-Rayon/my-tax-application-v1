@@ -35,7 +35,7 @@ foreach ($result as $row) {
                         <div class="well well-sm">
                             
                             <?php
-// After form submit checking everything for email sending
+// After Form submit checking everything for email sending
 if(isset($_POST['form_contact']))
 {
     $error_message = '';

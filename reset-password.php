@@ -3,26 +3,24 @@
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $banner_reset_password = $row['banner_reset_password'];
 }
 ?>
 
 <?php
-if( !isset($_GET['email']) || !isset($_GET['token']) )
-{
-    header('location: '.BASE_URL.'login.php');
+if (!isset($_GET['email']) || !isset($_GET['token'])) {
+    header('location: ' . BASE_URL . 'login.php');
     exit;
 }
 
 $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=? AND cust_token=?");
-$statement->execute(array($_GET['email'],$_GET['token']));
+$statement->execute(array($_GET['email'], $_GET['token']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 $tot = $statement->rowCount();
-if($tot == 0)
-{
-    header('location: '.BASE_URL.'login.php');
+if ($tot == 0) {
+    header('location: ' . BASE_URL . 'login.php');
     exit;
 }
 foreach ($result as $row) {
@@ -30,39 +28,32 @@ foreach ($result as $row) {
 }
 
 $error_message2 = '';
-if(time() - $saved_time > 86400)
-{
+if (time() - $saved_time > 86400) {
     $error_message2 = LANG_VALUE_144;
 }
 
-if(isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
 
     $valid = 1;
-    
-    if( empty($_POST['cust_new_password']) || empty($_POST['cust_re_password']) )
-    {
-        $valid = 0;
-        $error_message .= LANG_VALUE_140.'\\n';
-    }
-    else
-    {
-        if($_POST['cust_new_password'] != $_POST['cust_re_password'])
-        {
-            $valid = 0;
-            $error_message .= LANG_VALUE_139.'\\n';
-        }
-    }   
 
-    if($valid == 1) {
+    if (empty($_POST['cust_new_password']) || empty($_POST['cust_re_password'])) {
+        $valid = 0;
+        $error_message .= LANG_VALUE_140 . '\\n';
+    } else {
+        if ($_POST['cust_new_password'] != $_POST['cust_re_password']) {
+            $valid = 0;
+            $error_message .= LANG_VALUE_139 . '\\n';
+        }
+    }
+
+    if ($valid == 1) {
 
         $cust_new_password = strip_tags($_POST['cust_new_password']);
         $statement = $pdo->prepare("UPDATE tbl_customer SET cust_password=?, cust_token=?, cust_timestamp=? WHERE cust_email=?");
-        $statement->execute(array(md5($cust_new_password),'','',$_GET['email']));
-        
-        header('location: '.BASE_URL.'reset-password-success.php');
-    }
+        $statement->execute(array(md5($cust_new_password), '', '', $_GET['email']));
 
-    
+        header('location: ' . BASE_URL . 'reset-password-success.php');
+    }
 }
 ?>
 
@@ -78,13 +69,13 @@ if(isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <?php
-                    if($error_message != '') {
-                        echo "<script>alert('".$error_message."')</script>";
+                    if ($error_message != '') {
+                        echo "<script>alert('" . $error_message . "')</script>";
                     }
                     ?>
-                    <?php if($error_message2 != ''): ?>
+                    <?php if ($error_message2 != '') : ?>
                         <div class="error"><?php echo $error_message2; ?></div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <form action="" method="post">
                             <?php $csrf->echoInputField(); ?>
                             <div class="row">
@@ -103,11 +94,11 @@ if(isset($_POST['form1'])) {
                                         <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_149; ?>" name="form1">
                                     </div>
                                 </div>
-                            </div>                        
+                            </div>
                         </form>
                     <?php endif; ?>
-                    
-                </div>                
+
+                </div>
             </div>
         </div>
     </div>

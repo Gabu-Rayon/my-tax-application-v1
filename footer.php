@@ -209,31 +209,31 @@ foreach ($result as $row) {
 		}
 	}
 
-	// Initialize QuaggaJS with the configuration settings
-	Quagga.init({
-		inputStream: {
-			name: "Live",
-			type: "LiveStream",
-			target: document.querySelector("#bar_code"),
-		},
-		decoder: {
-			readers: ["code_128_reader"],
-		},
-	});
+	 // Initialize Quagga for barcode scanning
+	 Quagga.init({
+        inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector("#scanner"),
+        },
+        decoder: {
+            readers: ["ean_reader", "code_128_reader"],
+        },
+    });
 
-	// Start the scanner when the form is submitted
-	document.querySelector("form[role='scanBarcode']").addEventListener("submit", function(e) {
-		e.preventDefault();
-		Quagga.start();
-	});
+    Quagga.onDetected(function(result) {
+        // Handle the detected barcode data
+        var detectedBarcode = result.codeResult.code;
 
-	// Handle barcode scan results
-	Quagga.onDetected(function(result) {
-		var barcodeData = result.codeResult.code;
-		// You can do something with the barcode data here, e.g., submit it to the server or display it on the page.
-		document.querySelector("#bar_code").value = barcodeData;
-		Quagga.stop(); // Stop the scanner after a successful scan.
-	});
+        // Redirect to product.php with the detected barcode
+        window.location.href = "product.php?bar_code=" + detectedBarcode;
+    });
+
+    // Function to start barcode scanning when the button is clicked
+    function startBarcodeScanning() {
+        // Start the Quagga scanner
+        Quagga.start();
+    }
 </script>
 <?php echo $before_body; ?>
 </body>

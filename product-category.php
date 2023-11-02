@@ -143,7 +143,7 @@ if (!isset($_REQUEST['id']) || !isset($_REQUEST['type'])) {
                             <input type="text" class="form-control" placeholder="Enter barcode or scan" name="bar_code" id="bar_code">
                         </div>
                         <div class="form-group">
-                        <button type="submit" id="scanButton" name="scanButton" class="btn btn-danger">Scan Product BarCode</button>
+                            <button type="button" id="scanButton" name="scanButton" class="btn btn-danger" onclick="startBarcodeScanning()">Scan Product BarCode</button>
                         </div>
                     </form>
                 </div>

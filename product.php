@@ -16,8 +16,8 @@ if (!isset($_REQUEST['id'])) {
     }
 }
 
-if (isset($_GET['barcode'])) {
-    $barcode = $_GET['barcode'];
+if (isset($_GET['bar_code'])) {
+    $barcode = $_GET['bar_code'];
 
     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE barcode = ?");
     $statement->execute(array($barcode));

@@ -126,11 +126,17 @@ foreach ($result as $row) {
 		$vgallery_meta_title = $row['vgallery_meta_title'];
 		$vgallery_meta_keyword = $row['vgallery_meta_keyword'];
 		$vgallery_meta_description = $row['vgallery_meta_description'];
+
+		$calculatetax_meta_title = $row['calculate_tax_meta_title'];
+		$calculatetax_meta_keyword = $row['calculate_tax_meta_keyword'];
+		$calculatetax_meta_description = $row['calculate_tax_meta_description'];
 	}
 
 	$cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 	
-	if($cur_page == 'index.php' || $cur_page == 'login.php' || $cur_page == 'registration.php' || $cur_page == 'cart.php' || $cur_page == 'checkout.php' || $cur_page == 'forget-password.php' || $cur_page == 'reset-password.php' || $cur_page == 'product-category.php' || $cur_page == 'product.php') {
+	if($cur_page == 'index.php' || $cur_page == 'login.php' || $cur_page == 'registration.php' ||
+	 $cur_page == 'cart.php' || $cur_page == 'checkout.php' || $cur_page == 'forget-password.php' 
+	 || $cur_page == 'reset-password.php' || $cur_page == 'product-category.php' || $cur_page == 'product.php' || $cur_page == 'calculate-tax.php') {
 		?>
 		<title><?php echo $meta_title_home; ?></title>
 		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
@@ -183,6 +189,13 @@ foreach ($result as $row) {
 	if($cur_page == 'customer-profile-update.php') {
 		?>
 		<title>Update Profile - <?php echo $meta_title_home; ?></title>
+		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+		<meta name="description" content="<?php echo $meta_description_home; ?>">
+		<?php
+	}
+	if($cur_page == 'calculate-tax.php') {
+		?>
+		<title>Calculate Tax - <?php echo $meta_title_home; ?></title>
 		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
 		<meta name="description" content="<?php echo $meta_description_home; ?>">
 		<?php
@@ -396,11 +409,12 @@ foreach ($result as $row) {
 								$contact_title = $row['contact_title'];
 								$pgallery_title = $row['pgallery_title'];
 								$vgallery_title = $row['vgallery_title'];
+								$calculatetax_title = $row['calculate_tax_title'];
 							}
 							?>
 
 							<li><a href="about.php"><?php echo $about_title; ?></a></li>					
-							<li><a href="income-tax.php">Calc Income-Tax</a></li>
+							<li><a href="calculate-tax.php"><?php echo $calculatetax_title; ?></a></li>
 							<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
 						</ul>
 					</div>

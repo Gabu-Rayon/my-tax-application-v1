@@ -818,6 +818,7 @@ foreach ($result as $row) {
     $banner_cart                     = $row['banner_cart'];
     $banner_checkout                 = $row['banner_checkout'];
     $banner_product_category         = $row['banner_product_category'];
+    $banner_calculate_tax            = $row['banner_calculate_tax'];
    // $banner_blog                     = $row['banner_blog'];
    // $cta_title                       = $row['cta_title'];
    // $cta_content                     = $row['cta_content'];
@@ -1601,6 +1602,23 @@ foreach ($result as $row) {
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Product Category Page Banner</h4>
+                                        Select Photo<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_9">
+                                    </td>
+                                    </form>
+                                </tr>
+
+                                
+                                <tr>
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <td style="width:50%">
+                                        <h4>Existing Calculate Tax Page Banner</h4>
+                                        <p>
+                                            <img src="<?php echo '../assets/uploads/'.$banner_calculate_tax; ?>" alt="" style="width: 100%;height:auto;">  
+                                        </p>                                        
+                                    </td>
+                                    <td style="width:50%">
+                                        <h4>Change Calculate Tax Page Banner</h4>
                                         Select Photo<input type="file" name="photo">
                                         <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_9">
                                     </td>

@@ -16,6 +16,26 @@ if (!isset($_REQUEST['id'])) {
     }
 }
 
+if (isset($_GET['barcode'])) {
+    $barcode = $_GET['barcode'];
+
+    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE barcode = ?");
+    $statement->execute(array($barcode));
+    $total = $statement->rowCount();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($total == 0) {
+        header('location: index.php');
+        exit;
+    } else {
+        // Product not found
+        echo "<script>alert('Product not found.')</script>";
+    }
+} else {
+    // Handle the case when no barcode is provided
+    echo "<script>alert('Barcode not provided.')</script>";
+}
+
 foreach ($result as $row) {
     $p_name = $row['p_name'];
     $p_old_price = $row['p_old_price'];
@@ -678,7 +698,7 @@ if ($success_message1 != '') {
                                     <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?>
                                     <?php if ($row['p_old_price'] != '') : ?>
                                         <del>
-                                            <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?>
+                                            <i><small><?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?></small></i>
                                         </del>
                                     <?php endif; ?>
                                 </h4>
@@ -746,7 +766,7 @@ if ($success_message1 != '') {
                                     }
                                     ?>
                                 </div>
-                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo LANG_VALUE_154; ?></a></p>
+                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i></i> View Product Details</a></p>
                             </div>
                         </div>
                     <?php

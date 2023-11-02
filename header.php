@@ -229,7 +229,8 @@ foreach ($result as $row) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
-
+	 <!----Script for barcode Scanner---->
+	<script scr="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <?php echo $before_head; ?>
 
 </head>

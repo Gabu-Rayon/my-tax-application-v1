@@ -399,10 +399,9 @@ foreach ($result as $row) {
 							}
 							?>
 
-							<li><a href="about.php"><?php echo $about_title; ?></a></li>
+							<li><a href="about.php"><?php echo $about_title; ?></a></li>					
+							<li><a href="income-tax.php">Calc Income-Tax</a></li>
 							<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
-
-							<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
 						</ul>
 					</div>
 				</div>

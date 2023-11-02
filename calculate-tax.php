@@ -85,7 +85,7 @@ foreach ($result as $row) {
                                     <?php $csrf->echoInputField(); ?>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            PAY As You Earn (PAYE)
+                                            Pay As You Earn (PAYE)
                                         </div>
                                         <div class="col-md-8">
 

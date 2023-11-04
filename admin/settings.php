@@ -1303,18 +1303,18 @@ foreach ($result as $row) {
 
 
 
-                            <h3>Featured Product Section</h3>
+                            <h3>Featured Ads Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Featured Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Featured Ads Title<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="featured_product_title" value="<?php echo $featured_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Featured Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Featured Ads SubTitle<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="featured_product_subtitle" value="<?php echo $featured_product_subtitle; ?>">
                                         </div>
@@ -1330,18 +1330,18 @@ foreach ($result as $row) {
                             </form>
 
 
-                            <h3>Latest Product Section</h3>
+                            <h3>Latest Ads Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Latest Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Latest Ads Title<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="latest_product_title" value="<?php echo $latest_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Latest Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Latest Ads SubTitle<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="latest_product_subtitle" value="<?php echo $latest_product_subtitle; ?>">
                                         </div>
@@ -1357,18 +1357,18 @@ foreach ($result as $row) {
                             </form>
 
 
-                            <h3>Popular Product Section</h3>
+                            <h3>Popular Ads Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Popular Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Popular Ads Title<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="popular_product_title" value="<?php echo $popular_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Popular Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Popular Ads SubTitle<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="popular_product_subtitle" value="<?php echo $popular_product_subtitle; ?>">
                                         </div>

@@ -485,6 +485,15 @@ if ($success_message1 != '') {
                                     <?php echo LANG_VALUE_55; ?> <br>
                                     <input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
                                 </div>
+                                <div class="p-price">
+                                    Product Taxes Imposed
+                                    </div>
+                                     <p>Import Duty</p>
+                                     <p>Excise Value</p>
+                                     <p>VAT Value</p>
+                                     <p>Railways Development Levy</p>
+                                     <p>Customs Value/CIF</p>
+                                    
                                 <div class="btn-cart btn-cart1">
                                     <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
                                 </div>

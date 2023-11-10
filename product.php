@@ -481,9 +481,9 @@ if ($success_message1 != '') {
                                      <p><?php echo $tax_imposed_variat; ?></p>
                                      <p>
                                          <?php
-                                             $InsurancePercent = 0.00000005;
+                                             $InsurancePercent = 0.02;
                                              $costOfGoods = $p_current_price;
-                                             $freightCharges = 10;
+                                             $freightCharges = 3;
                                              // Calculate CIF
                                              $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
                                              echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
@@ -493,10 +493,10 @@ if ($success_message1 != '') {
                                      <p>
                                         <?php 
                                            //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
-                                           $exciseTaxRate =0.00011;
+                                           $exciseTaxRate =0.1;
                                            $VolumeofGoodORQuantity = $p_qty;
-                                           $ExciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
-                                           echo "Excise Value: Ksh    " . number_format($CIF, 2);
+                                           $exciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
+                                           echo "Excise Value: Ksh    " . number_format($exciseValue, 2);
                                          
                                          ?>
                                         </p>

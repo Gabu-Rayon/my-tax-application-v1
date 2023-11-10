@@ -510,7 +510,6 @@ if ($success_message1 != '') {
                                            echo "VAT Value: Ksh    " . number_format($VATValue, 2);
                                      ?>
                                      </p>
-
                                      <P>
                                         <?php
                                         //Railways Development Levy=Customs Value/CIF×Railways Development Levy Rate

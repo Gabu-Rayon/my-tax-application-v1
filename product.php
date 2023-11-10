@@ -474,29 +474,29 @@ if ($success_message1 != '') {
                                     Product Taxes Imposed
                                     </div>
                                     <?php
-                                        $depreciationRate = 40; // 40%
+                                        $depreciationRate = 5; // 40%
 
                                        if ($tax_imposed_variat == 'imported') {  
                                     ?>
                                      <p><?php echo $tax_imposed_variat; ?></p>
                                      <p>
                                          <?php
-                                             $InsurancePercent = 0.025;
+                                             $InsurancePercent = 0.00000005;
                                              $costOfGoods = $p_current_price;
-                                             $freightCharges = 120;
+                                             $freightCharges = 10;
                                              // Calculate CIF
                                              $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
                                              echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
                                          ?>
                                         </p>
                                      <p><?php echo "Depriciation Value  " . number_format($depreciationRate, 2); ?> %</p>
-                                     <p>Excise Value
+                                     <p>
                                         <?php 
                                            //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
-                                           $exciseTaxRate =0.11;
+                                           $exciseTaxRate =0.00011;
                                            $VolumeofGoodORQuantity = $p_qty;
                                            $ExciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
-                                           echo "Excise Value: Ksh" . number_format($CIF, 2);
+                                           echo "Excise Value: Ksh    " . number_format($CIF, 2);
                                          
                                          ?>
                                         </p>

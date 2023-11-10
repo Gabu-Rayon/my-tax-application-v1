@@ -51,6 +51,7 @@ foreach ($result as $row) {
     $p_is_featured = $row['p_is_featured'];
     $p_is_active = $row['p_is_active'];
     $ecat_id = $row['ecat_id'];
+    $tax_imposed_variat = $row['tax_imposed_variat'];
 }
 
 // Getting All categories name for breadcrumb
@@ -468,7 +469,63 @@ if ($success_message1 != '') {
 
                                     </div>
 
-                                </div>
+                                </div>                              
+                                <div class="p-price">
+                                    Product Taxes Imposed
+                                    </div>
+                                    <?php
+                                        $depreciationRate = 40; // 40%
+
+                                       if ($tax_imposed_variat == 'imported') {  
+                                    ?>
+                                     <p><?php echo $tax_imposed_variat; ?></p>
+                                     <p>
+                                         <?php
+                                             $InsurancePercent = 0.025;
+                                             $costOfGoods = $p_current_price;
+                                             $freightCharges = 120;
+                                             // Calculate CIF
+                                             $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
+                                             echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
+                                         ?>
+                                        </p>
+                                     <p><?php echo "Depriciation Value  " . number_format($depreciationRate, 2); ?> %</p>
+                                     <p>Excise Value
+                                        <?php 
+                                           //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
+                                           $exciseTaxRate =0.11;
+                                           $VolumeofGoodORQuantity = $p_qty;
+                                           $ExciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
+                                           echo "Excise Value: Ksh" . number_format($CIF, 2);
+                                         
+                                         ?>
+                                        </p>
+                                     <p>  
+                                     <?php 
+                                          $VATRate = 0.16 ;//16%
+                                           //VAT Value=VAT Rate×Customs Value/CIF
+                                           //VAT Value=(Customs Value/CIF+Import Duty+Other Applicable Duties)×VAT Rate
+                                           $VATValue =  $VATRate  *  $CIF;
+
+                                           echo "VAT Value: Ksh    " . number_format($VATValue, 2);
+                                     ?>
+                                     </p>
+
+                                     <P>
+                                        <?php
+                                        //Railways Development Levy=Customs Value/CIF×Railways Development Levy Rate
+                                         $railwaysDevelopmentLevyRate = 0.12; //12%
+                                         $railwaysDevelopmentLevy = $CIF * $railwaysDevelopmentLevyRate;
+                                         echo "Railways Development Levy: Ksh    " . number_format($railwaysDevelopmentLevy, 2);
+                                        ?>                                       
+                                     </P>
+                                     <?php
+                                        } else {
+                                        // Product is locally made, no import duty
+                                        echo "Product is locally made. No import duty.";
+
+                                        }
+                                     ?>
                                 <div class="p-price">
                                     <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                     <span>
@@ -485,14 +542,7 @@ if ($success_message1 != '') {
                                     <?php echo LANG_VALUE_55; ?> <br>
                                     <input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
                                 </div>
-                                <div class="p-price">
-                                    Product Taxes Imposed
-                                    </div>
-                                     <p>Import Duty</p>
-                                     <p>Excise Value</p>
-                                     <p>VAT Value</p>
-                                     <p>Railways Development Levy</p>
-                                     <p>Customs Value/CIF</p>
+                                
                                     
                                 <div class="btn-cart btn-cart1">
                                     <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">

@@ -24,9 +24,9 @@ foreach ($result as $row) {
 }
 ?>
 <style>
-    .hidden-form {
-        display: none;
-    }
+.hidden-form {
+    display: none;
+}
 </style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $calculate_tax_banner; ?>);">
     <div class="inner">
@@ -70,12 +70,14 @@ foreach ($result as $row) {
 
                                         <div class="form-group">
                                             <label for=""> Amount * : </label>
-                                            <input class="form-control" type="text" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="text" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> VAT Rate * : <i><small>In % </small></i> </label>
-                                            <input class="form-control" type="number" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="number" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
 
                                         <div class="form-group">
@@ -102,38 +104,49 @@ foreach ($result as $row) {
 
                                         <div class="form-group">
                                             <label for=""> Year of taxation *: </label>
-                                            <input class="form-control" type="year" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="year" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Payment Period *: </label>
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""> Gross Salary*: </label>
-                                            <input class="form-control" type="text" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="text" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Contribution Benefit *: </label>
-                                            <input class="form-control" type="text" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="text" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""> Do you have a disability excemption certificate? *: </label>
-                                            <input class="form-control" type="radio" name="grossIncome" placeholder="Income eg Ksh 600,000">
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="radio" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Do you have a Mortgage? *: </label>
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""> Do you have a Home Ownership *: </label>
-                                            <input class="form-control" type="radio" name="grossIncome" placeholder="Income eg Ksh 600,000">
-                                            <input class="form-control" type="radio" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="radio" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="radio" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""></label>
@@ -154,30 +167,36 @@ foreach ($result as $row) {
 
                                         <div class="form-group">
                                             <label for=""> Vehicle Month of Manufacture *: </label>
-                                            <input class="form-control" type="month" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="month" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Vehicle Year of Manufacture *: </label>
-                                            <input class="form-control" type="number" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="number" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""> Vehicle Make *: </label>
-                                            <input class="form-control" type="text" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="text" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Vehicle Body Type*: </label>
-                                            <input class="form-control" type="number" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="number" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""> Vehicle Model*: </label>
-                                            <input class="form-control" type="text" name="grossIncome" placeholder="Income eg Ksh 600,000">
+                                            <input class="form-control" type="text" name="grossIncome"
+                                                placeholder="Income eg Ksh 600,000">
                                         </div>
 
                                         <div class="form-group">
                                             <label for=""> Vehicle Engine Size*: <i><small>In Cc</small></i> </label>
-                                            <input class="form-control" type="number" name="rate" min="1" max="40" value="0">
+                                            <input class="form-control" type="number" name="rate" min="1" max="40"
+                                                value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for=""></label>
@@ -192,15 +211,19 @@ foreach ($result as $row) {
 
                             <div class="p-review">
                                 <div class="rating">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis temporibus optio animi qui labore modi nisi ad
-                                    ipisci vel neque architecto repudiandae voluptatibus quisquam quos obcaecati iusto, fuga aperiam nostrum officiis.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis temporibus
+                                    optio animi qui labore modi nisi ad
+                                    ipisci vel neque architecto repudiandae voluptatibus quisquam quos obcaecati iusto,
+                                    fuga aperiam nostrum officiis.
 
                                 </div>
                             </div>
                             <div class="p-short-des">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis temporibus optio animi qui labore modi nisi ad
-                                    ipisci vel neque architecto repudiandae voluptatibus quisquam quos obcaecati iusto, fuga aperiam nostrum officiis.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis temporibus
+                                    optio animi qui labore modi nisi ad
+                                    ipisci vel neque architecto repudiandae voluptatibus quisquam quos obcaecati iusto,
+                                    fuga aperiam nostrum officiis.
 
                                 </p>
                             </div>
@@ -213,18 +236,18 @@ foreach ($result as $row) {
 </div>
 
 <script>
-    function showForm() {
-        // Get the selected value from the dropdown
-        var selectedOption = document.getElementById("calculationSelect").value;
+function showForm() {
+    // Get the selected value from the dropdown
+    var selectedOption = document.getElementById("calculationSelect").value;
 
-        // Hide all forms
-        document.getElementById("vatModalForm").classList.add("hidden-form");
-        document.getElementById("payeModalForm").classList.add("hidden-form");
-        document.getElementById("importModalForm").classList.add("hidden-form");
+    // Hide all forms
+    document.getElementById("vatModalForm").classList.add("hidden-form");
+    document.getElementById("payeModalForm").classList.add("hidden-form");
+    document.getElementById("importModalForm").classList.add("hidden-form");
 
-        // Show the selected form
-        document.getElementById(selectedOption + "Form").classList.remove("hidden-form");
-    }
+    // Show the selected form
+    document.getElementById(selectedOption + "Form").classList.remove("hidden-form");
+}
 </script>
 
 <?php require_once('footer.php'); ?>

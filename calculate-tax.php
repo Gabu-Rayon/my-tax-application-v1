@@ -50,11 +50,11 @@ foreach ($result as $row) {
                         <li><a href="product-category.php"> Calculate Tax</a></li>
                         <li>> </li>
                         <li>
-                            <select id="calculationSelect" onchange="showForm()">
+                            <select id="calculationSelect" class="form-control select2 mid-cat" onchange="showForm()">
                                 <option>Select Calculation Tax .. .</option>
-                                <option value="vatModal">Paye As You Earn (PAYE)</option>
-                                <option value="payeModal">Custom Import Duty</option>
-                                <option value="importModal">VAT Calculator</option>
+                                <option value="vatModal">VAT Calculator</option>
+                                <option value="payeModal">Paye As You Earn (PAYE)</option>
+                                <option value="importModal">Custom Import Duty </option>
                             </select>
                         </li>
                     </ul>
@@ -83,11 +83,18 @@ foreach ($result as $row) {
                                                 <input class="form-control" type="number" name="rate" min="1" max="40"
                                                     value="0">
                                             </div>
-
-                                            <div class="form-group">
-                                                <label for="">Options * : </label>
-                                                <input class="form-control" type="radio" name="add_vat">Add VAT
-                                                <input class="form-control" type="radio" name="remove_vat">Remove VAT
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="add_vat" id="addVat">
+                                                <label class="form-check-label" for="AddVat">
+                                                    Add VAT
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="remove_vat"
+                                                    id="removeVat" checked>
+                                                <label class="form-check-label" for="removeVat">
+                                                    Remove VAT
+                                                </label>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>
@@ -111,16 +118,26 @@ foreach ($result as $row) {
 
                                             <div class="form-group">
                                                 <label for=""> Year of taxation *: </label>
-                                                <input class="form-control" type="year" name="grossIncome"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                <input class="form-control" type="year" id="datepicker" name="year_taxation"
+                                                    placeholder="2023">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Payment Period *: </label>
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="p_monthly"
+                                                    id="pMonthly">
+                                                <label class="form-check-label" for="Month">
+                                                    Month
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="p_yearly"
+                                                    id="pYearly" checked>
+                                                <label class="form-check-label" for="Year">
+                                                    Year
+                                                </label>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Gross Salary*: </label>
@@ -136,25 +153,75 @@ foreach ($result as $row) {
                                             <div class="form-group">
                                                 <label for=""> Do you have a disability excemption certificate? *:
                                                 </label>
-                                                <input class="form-control" type="radio" name="grossIncome"
-                                                    placeholder="Income eg Ksh 600,000">
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
+                                            </div>                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="disability_yes"
+                                                    id="dYes">
+                                                <label class="form-check-label" for="Yes">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="disability_no"
+                                                    id="dNo" checked>
+                                                <label class="form-check-label" for="No">
+                                                    No
+                                                </label>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Do you have a Mortgage? *: </label>
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
+                                            </div>
+                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="mortgage_yes"
+                                                    id="mortgageYes">
+                                                <label class="form-check-label" for="Yes">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="mortgage_no"
+                                                    id="mortgageNo" checked>
+                                                <label class="form-check-label" for="No">
+                                                    No
+                                                </label>
                                             </div>
                                             <div class="form-group">
-                                                <label for=""> Do you have a Home Ownership *: </label>
-                                                <input class="form-control" type="radio" name="grossIncome"
-                                                    placeholder="Income eg Ksh 600,000">
-                                                <input class="form-control" type="radio" name="rate" min="1" max="40"
-                                                    value="0">
+                                                <label for=""> Do you have a life insurance policy? *: </label>
+                                            </div>
+                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="insurance_yes"
+                                                    id="insuranceYes">
+                                                <label class="form-check-label" for="Yes">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="insurance_no"
+                                                    id="insurancerNo" checked>
+                                                <label class="form-check-label" for="No">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for=""> Do you have a Home Ownership Savings Plan ? *: </label>
+                                            </div>
+                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="home_yes"
+                                                    id="homeYes">
+                                                <label class="form-check-label" for="Yes">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="home_no"
+                                                    id="homeNo" checked>
+                                                <label class="form-check-label" for="No">
+                                                    No
+                                                </label>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>

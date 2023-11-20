@@ -118,7 +118,7 @@ foreach ($result as $row) {
 
                                             <div class="form-group">
                                                 <label for=""> Year of taxation *: </label>
-                                                <input class="form-control" type="year" id="datepicker" name="year_taxation"
+                                                <input class="form-control" type="text" id="yearInput" pattern="[0-9]{4}" name="year_taxation"
                                                     placeholder="2023">
                                             </div>
 
@@ -245,8 +245,8 @@ foreach ($result as $row) {
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Month of Manufacture *: </label>
-                                                <input class="form-control" type="month" name="grossIncome"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                <input class="form-control" type="month" name="manufacturing_month"
+                                                    placeholder="December">
                                             </div>
 
                                             <div class="form-group">
@@ -331,6 +331,7 @@ foreach ($result as $row) {
         // Show the selected form
         document.getElementById(selectedOption + "Form").classList.remove("hidden-form");
     }
+
 </script>
 
 <?php require_once('footer.php'); ?>

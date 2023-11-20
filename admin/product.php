@@ -34,9 +34,7 @@
                         <tbody>
                             <?php
                             $i=0;
-$statement = $pdo->prepare("SELECT
-														
-														t1.p_id,
+                            $statement = $pdo->prepare("SELECTt1.p_id,
 														t1.p_name,
 														t1.p_old_price,
 														t1.p_current_price,
@@ -65,11 +63,11 @@ $statement = $pdo->prepare("SELECT
 							                           	ON t3.tcat_id = t4.tcat_id
 							                           	ORDER BY t1.p_id DESC
 							                           	");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    $i++;
-    ?>
+                                                        $statement->execute();
+                                                        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                        foreach ($result as $row) {
+                                                        $i++;
+                                                    ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td style="width:82px;"><img
@@ -123,8 +121,6 @@ foreach ($result as $row) {
         </div>
     </div>
 </section>
-
-
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">

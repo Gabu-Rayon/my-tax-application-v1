@@ -119,9 +119,10 @@ if(isset($_POST['form1'])) {
 										p_total_view,
 										p_is_featured,
 										p_is_active,
-										ecat_id
-									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $statement->execute(array(
+										ecat_id,
+                                        tax_imposed_variat
+									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+									$statement->execute(array(
                                         $_POST['p_name'],
                                         $_POST['p_old_price'],
                                         $_POST['p_current_price'],
@@ -136,7 +137,8 @@ if(isset($_POST['form1'])) {
 										$_POST['p_barcode'],
                                         $_POST['p_is_featured'],
                                         $_POST['p_is_active'],
-                                        $_POST['ecat_id']
+                                        $_POST['ecat_id'],
+										$_POST['p_tax_imposed_variat']
                                     ));
 
         
@@ -207,16 +209,16 @@ if(isset($_POST['form1'])) {
                                     <option value="">Select Top Level Category</option>
                                     <?php
                                     $statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										    ?>
                                     <option value="<?php echo $row['tcat_id']; ?>">
                                         <?php echo $row['tcat_name']; ?>
                                     </option>
                                     <?php
-}
-?>
+									}
+									?>
                                 </select>
                             </div>
                         </div>
@@ -267,17 +269,17 @@ foreach ($result as $row) {
                             <div class="col-sm-4">
                                 <select name="size[]" class="form-control select2" multiple="multiple">
                                     <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_size ORDER BY size_id ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+									$statement = $pdo->prepare("SELECT * FROM tbl_size ORDER BY size_id ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										    ?>
                                     <option value="<?php echo $row['size_id']; ?>">
                                         <?php echo $row['size_name']; ?>
                                     </option>
                                     <?php
-}
-?>
+									}
+									?>
                                 </select>
                             </div>
                         </div>
@@ -286,17 +288,17 @@ foreach ($result as $row) {
                             <div class="col-sm-4">
                                 <select name="color[]" class="form-control select2" multiple="multiple">
                                     <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_color ORDER BY color_id ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+									$statement = $pdo->prepare("SELECT * FROM tbl_color ORDER BY color_id ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										    ?>
                                     <option value="<?php echo $row['color_id']; ?>">
                                         <?php echo $row['color_name']; ?>
                                     </option>
                                     <?php
-}
-?>
+									}
+									?>
                                 </select>
                             </div>
                         </div>
@@ -364,6 +366,16 @@ foreach ($result as $row) {
                                     id="editor5"></textarea>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Tax Imposed Variat</label>
+                            <div class="col-sm-8">
+                                <select name="p_tax_imposed_variat" class="form-control" style="width:auto;">
+                                    <option value="0">Imported</option>
+                                    <option value="1">Locally Manufactured</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Is Featured?</label>
                             <div class="col-sm-8">
@@ -391,13 +403,8 @@ foreach ($result as $row) {
                         </div>
                     </div>
                 </div>
-
             </form>
-
-
         </div>
     </div>
-
 </section>
-
 <?php require_once('footer.php'); ?>

@@ -34,7 +34,8 @@
                         <tbody>
                             <?php
                             $i=0;
-                            $statement = $pdo->prepare("SELECTt1.p_id,
+                            $statement = $pdo->prepare("SELECT 
+                                                        t1.p_id,
 														t1.p_name,
 														t1.p_old_price,
 														t1.p_current_price,

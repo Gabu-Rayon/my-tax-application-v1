@@ -140,10 +140,12 @@ if (!isset($_REQUEST['id']) || !isset($_REQUEST['type'])) {
                     <form class="form" role="scanBarcode" action="product.php" method="post">
                         <?php $csrf->echoInputField(); ?>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter barcode or scan" name="bar_code" id="bar_code">
+                            <input type="text" class="form-control" placeholder="Enter barcode or scan" name="bar_code"
+                                id="bar_code">
                         </div>
                         <div class="form-group">
-                            <button type="button" id="scanButton" name="scanButton" class="btn btn-danger" onclick="startBarcodeScanning()">Scan Product BarCode</button>
+                            <button type="button" id="scanButton" name="scanButton" class="btn btn-danger"
+                                onclick="startBarcodeScanning()">Scan Product BarCode</button>
                         </div>
                     </form>
                 </div>
@@ -175,24 +177,34 @@ if (!isset($_REQUEST['id']) || !isset($_REQUEST['type'])) {
                                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($result as $row) {
                         ?>
-                                    <div class="col-md-4 item item-product-cat">
-                                        <div class="inner">
-                                            <div class="thumb">
-                                                <div class="photo" style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);"></div>
-                                                <div class="overlay"></div>
-                                            </div>
-                                            <div class="text">
-                                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
-                                                <h4>
-                                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?>
-                                                    <?php if ($row['p_old_price'] != '') : ?>
-                                                        <del>
-                                                            <small><i> <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?></i></small>
-                                                        </del>
-                                                    <?php endif; ?>
-                                                </h4>
-                                                <div class="rating">
-                                                    <?php
+                        <div class="col-md-4 item item-product-cat">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <div class="photo"
+                                        style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);">
+                                    </div>
+                                    <div class="overlay"></div>
+                                </div>
+                                <div class="text">
+                                    <h3><a
+                                            href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a>
+                                    </h3>
+                                    <h4>
+                                        <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?>
+                                        <?php if ($row['p_old_price'] != '') : ?>
+                                        <del>
+                                            <small><i>
+                                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?></i></small>
+                                        </del>
+                                        <?php endif; ?>
+                                        <br>
+                                        <small>
+                                            <i>Tax Imposed Variat </i>
+                                        </small>
+                                        <?php echo $row['tax_imposed_variat']; ?>
+                                    </h4>
+                                    <div class="rating">
+                                        <?php
                                                     $t_rating = 0;
                                                     $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
                                                     $statement1->execute(array($row['p_id']));
@@ -207,7 +219,7 @@ if (!isset($_REQUEST['id']) || !isset($_REQUEST['type'])) {
                                                         $avg_rating = $t_rating / $tot_rating;
                                                     }
                                                     ?>
-                                                    <?php
+                                        <?php
                                                     if ($avg_rating == 0) {
                                                         echo '';
                                                     } elseif ($avg_rating == 1.5) {
@@ -245,28 +257,29 @@ if (!isset($_REQUEST['id']) || !isset($_REQUEST['type'])) {
                                                     } else {
                                                         for ($i = 1; $i <= 5; $i++) {
                                                     ?>
-                                                            <?php if ($i > $avg_rating) : ?>
-                                                                <i class="fa fa-star-o"></i>
-                                                            <?php else : ?>
-                                                                <i class="fa fa-star"></i>
-                                                            <?php endif; ?>
-                                                    <?php
+                                        <?php if ($i > $avg_rating) : ?>
+                                        <i class="fa fa-star-o"></i>
+                                        <?php else : ?>
+                                        <i class="fa fa-star"></i>
+                                        <?php endif; ?>
+                                        <?php
                                                         }
                                                     }
                                                     ?>
-                                                </div>
-                                                <?php if ($row['p_qty'] == 0) : ?>
-                                                    <div class="out-of-stock">
-                                                        <div class="inner">
-                                                            Out Of Stock
-                                                        </div>
-                                                    </div>
-                                                <?php else : ?>
-                                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Details</a></p>
-                                                <?php endif; ?>
-                                            </div>
+                                    </div>
+                                    <?php if ($row['p_qty'] == 0) : ?>
+                                    <div class="out-of-stock">
+                                        <div class="inner">
+                                            Out Of Stock
                                         </div>
                                     </div>
+                                    <?php else : ?>
+                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i>
+                                            View Product Details</a></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
                         <?php
                                 }
                             }

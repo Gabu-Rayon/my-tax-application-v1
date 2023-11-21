@@ -264,25 +264,77 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Month of Manufacture *: </label>
-                                                <input class="form-control" type="month" name="manufacturing_month"
-                                                    placeholder="December">
+                                                <select name="manafacturer" class="form-control ">
+                                                    <option value="">Select Manafuacturing Month</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['month']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Year of Manufacture *: </label>
-                                                <input class="form-control" type="number" name="manufacturing_year"
-                                                    min="1" max="40" value="0">
+                                                <select name="manafacturer" class="form-control ">
+                                                    <option value="">Select Vehicle Manufacturing Year</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['year']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Make *: </label>
-                                                <input class="form-control" type="text" name="manufacturer"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                <select name="manafacturer" class="form-control ">
+                                                    <option value="">Select Vehicle Maker</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['vehicle_makers']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Body Type*: </label>
-                                                <input class="form-control" type="number" name="body_type" min="1"
-                                                    max="40" value="0">
+                                                <select name="manafacturer" class="form-control ">
+                                                    <option value="">Select Vehicle Body Type</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['body_type']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Model*: </label>
@@ -318,25 +370,77 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Month of Manufacture *: </label>
-                                                <input class="form-control" type="month" name="manufacturing_m"
-                                                    placeholder="December">
+                                                <select name="manafacturer_month" class="form-control ">
+                                                    <option value="">Select Manafuacturing Month</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['month']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Year of Manufacture *: </label>
-                                                <input class="form-control" type="number" name="manufacturing_y" min="1"
-                                                    max="40" value="0">
+                                                <select name="manafacturer_y" class="form-control ">
+                                                    <option value="">Select Vehicle Manufacturing Year</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['year']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Make *: </label>
-                                                <input class="form-control" type="text" name="manufacturer_c"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                <select name="manafacturer_m" class="form-control ">
+                                                    <option value="">Select Vehicle Maker</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['motor_cycle_makers']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Body Type*: </label>
-                                                <input class="form-control" type="number" name="body_t" min="1" max="40"
-                                                    value="0">
+                                                <select name="body_type_m" class="form-control ">
+                                                    <option value="">Select Vehicle Body Type</option>
+                                                    <?php
+                                                      $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['motor_cycle_body_type']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                 ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Model*: </label>
@@ -367,195 +471,202 @@ th {
                                 <div class="rating">
                                     <!------------Display the output-------->
                                     <?php
-                                         // Code for processing PAYE calculation
-                                         if (isset($_POST['form1'])) {
-                                             $grossIncome = floatval($_POST['grossIncome']);
-                                             $vatRate = floatval($_POST['rate']);
+     // Code for processing PAYE calculation
+     if (isset($_POST['form1'])) {
+         $grossIncome = floatval($_POST['grossIncome']);
+         $vatRate = floatval($_POST['rate']);
                                           
-                                             $addVat = isset($_POST['add_vat']);
-                                             $removeVat = isset($_POST['remove_vat']);
+         $addVat = isset($_POST['add_vat']);
+         $removeVat = isset($_POST['remove_vat']);
                                           
-                                             $vatDivisor = 1 + ($vatRate / 100);
-                                             $priceBeforeVat = $grossIncome / $vatDivisor;
-                                             $vatAmount = $grossIncome - $priceBeforeVat;
+         $vatDivisor = 1 + ($vatRate / 100);
+         $priceBeforeVat = $grossIncome / $vatDivisor;
+         $vatAmount = $grossIncome - $priceBeforeVat;
                                           
-                                             echo "<table>";
-                                             echo "<tr>";
-                                             echo "<th>Parameter</th>";
-                                             echo "<th>Value</th>";
-                                             echo "</tr>";
+         echo "<table>";
+         echo "<tr>";
+         echo "<th>Parameter</th>";
+         echo "<th>Value</th>";
+         echo "</tr>";
                                           
-                                             echo "<tr>";
-                                             echo "<td>Gross Income (excluding VAT)</td>";
-                                             echo "<td>Kes $priceBeforeVat</td>";
-                                             echo "</tr>";
+         echo "<tr>";
+         echo "<td>Gross Income (excluding VAT)</td>";
+         echo "<td>Kes $priceBeforeVat</td>";
+         echo "</tr>";
                                           
-                                             echo "<tr>";
-                                             echo "<td>VAT Rate (%)</td>";
-                                             echo "<td>$vatRate%</td>";
-                                             echo "</tr>";
+         echo "<tr>";
+         echo "<td>VAT Rate (%)</td>";
+         echo "<td>$vatRate%</td>";
+         echo "</tr>";
                                           
-                                             echo "<tr>";
-                                             echo "<td>VAT Amount</td>";
-                                             echo "<td>Kes $vatAmount</td>";
-                                             echo "</tr>";
+         echo "<tr>";
+         echo "<td>VAT Amount</td>";
+         echo "<td>Kes $vatAmount</td>";
+         echo "</tr>";
                                           
-                                             if ($addVat) {
-                                                 echo "<tr>";
-                                                 echo "<td>Gross Amount (including VAT)</td>";
-                                                 echo "<td>Kes $grossIncome</td>";
-                                                 echo "</tr>";
-                                             } elseif ($removeVat) {
-                                                 echo "<tr>";
-                                                 echo "<td>Gross Amount (excluding VAT)</td>";
-                                                 echo "<td>Kes $priceBeforeVat</td>";
-                                                 echo "</tr>";
-                                             } else {
-                                                 echo "<tr>";
-                                                 echo "<td colspan=2><strong>Please select either 'Add VAT' or 'Remove VAT'</strong></td>";
-                                                 echo "</tr>";
-                                             }
+         if ($addVat) {
+             echo "<tr>";
+             echo "<td>Gross Amount (including VAT)</td>";
+             echo "<td>Kes $grossIncome</td>";
+             echo "</tr>";
+         } elseif ($removeVat) {
+             echo "<tr>";
+             echo "<td>Gross Amount (excluding VAT)</td>";
+             echo "<td>Kes $priceBeforeVat</td>";
+             echo "</tr>";
+         } else {
+             echo "<tr>";
+             echo "<td colspan=2><strong>Please select either 'Add VAT' or 'Remove VAT'</strong></td>";
+             echo "</tr>";
+         }
                                           
-                                             echo "</table>";
-                                         } elseif (isset($_POST['form2'])) {
+         echo "</table>";
+     } elseif (isset($_POST['form2'])) {
 
                                          
-                                             // Retrieve form input values
-                                             $year = $_POST['year_taxation'];
-                                             $paymentPeriod = $_POST['p_monthly'] ? 'Monthly' : 'Yearly';
+         // Retrieve form input values
+         $year = $_POST['year_taxation'];
+         $paymentPeriod = $_POST['p_monthly'] ? 'Monthly' : 'Yearly';
                                          
-                                             $grossSalary = str_replace(',', '', $_POST['grossIncome']);
-                                             $contributionBenefit = $_POST['contribution_benefit'];
-                                             //  $disabilityExemption = $_POST['disability_yes'] === 'on' ? 'Yes' : 'No';
-                                             $disabilityExemption = isset($_POST['disability_yes']) ? $_POST['disability_yes'] : $_POST['disability_no'];
-                                             $mortgagePlan = isset($_POST['mortgage_yes']) ? $_POST['mortgage_yes'] : $_POST['mortgage_no'];
-                                             $insurancePolicy = isset($_POST['insurance_yes']) ? $_POST['insurance_yes'] : $_POST['insurance_no'];
-                                             $homeOwnership = isset($_POST['home_yes']) ? $_POST['home_yes'] : $_POST['home_no'];
+         $grossSalary = str_replace(',', '', $_POST['grossIncome']);
+         $contributionBenefit = $_POST['contribution_benefit'];
+         //  $disabilityExemption = $_POST['disability_yes'] === 'on' ? 'Yes' : 'No';
+         $disabilityExemption = isset($_POST['disability_yes']) ? $_POST['disability_yes'] : $_POST['disability_no'];
+         $mortgagePlan = isset($_POST['mortgage_yes']) ? $_POST['mortgage_yes'] : $_POST['mortgage_no'];
+         $insurancePolicy = isset($_POST['insurance_yes']) ? $_POST['insurance_yes'] : $_POST['insurance_no'];
+         $homeOwnership = isset($_POST['home_yes']) ? $_POST['home_yes'] : $_POST['home_no'];
                                          
-                                             //  $mortgagePlan = $_POST['mortgage_yes'] === 'on' ? 'Yes' : 'No';
-                                             $mortgageInterest = $_POST['mortgage_interest'];
-                                             //  $insurancePolicy = $_POST['insurance_yes'] === 'on' ? 'Yes' : 'No';
-                                             $insurancePremium = $_POST['insurance_premium'];
-                                             //  $homeOwnership = $_POST['home_yes'] === 'on' ? 'Yes' : 'No';
-                                             $homeOwnershipDeposit = $_POST['home_ownershipDeposit'];
+         //  $mortgagePlan = $_POST['mortgage_yes'] === 'on' ? 'Yes' : 'No';
+         $mortgageInterest = $_POST['mortgage_interest'];
+         //  $insurancePolicy = $_POST['insurance_yes'] === 'on' ? 'Yes' : 'No';
+         $insurancePremium = $_POST['insurance_premium'];
+         //  $homeOwnership = $_POST['home_yes'] === 'on' ? 'Yes' : 'No';
+         $homeOwnershipDeposit = $_POST['home_ownershipDeposit'];
 
-                                             // Define tax slabs and corresponding percentages
-                                             $taxSlabs = [
-                                                 [170000, 0.1],
-                                                 [240000, 0.25],
-                                                 [320000, 0.3],
-                                                 [99999999, 0.32],
-                                             ];
+         // Define tax slabs and corresponding percentages
+         $taxSlabs = [
+             [170000, 0.1],
+             [240000, 0.25],
+             [320000, 0.3],
+             [99999999, 0.32],
+         ];
 
-                                             // Calculate taxable income
-                                             $taxableIncome = $grossSalary - $contributionBenefit;
+         // Calculate taxable income
+         $taxableIncome = $grossSalary - $contributionBenefit;
 
-                                             // Apply disability exemption if applicable
-                                             if ($disabilityExemption === 'Yes') {
-                                                 $taxableIncome -= 10000;
-                                             }
+         // Apply disability exemption if applicable
+         if ($disabilityExemption === 'Yes') {
+             $taxableIncome -= 10000;
+         }
 
-                                             // Calculate mortgage relief
-                                             $mortgageRelief = 0;
-                                             if ($mortgagePlan === 'Yes') {
-                                                 $mortgageRelief = min($grossSalary * 0.25, $mortgageInterest);
-                                             }
+         // Calculate mortgage relief
+         $mortgageRelief = 0;
+         if ($mortgagePlan === 'Yes') {
+             $mortgageRelief = min($grossSalary * 0.25, $mortgageInterest);
+         }
 
-                                             // Calculate insurance relief
-                                             $insuranceRelief = min($grossSalary * 0.07, $insurancePremium);
+         // Calculate insurance relief
+         $insuranceRelief = min($grossSalary * 0.07, $insurancePremium);
 
-                                             // Calculate home ownership relief
-                                             $homeOwnershipRelief = 0;
-                                             if ($homeOwnership === 'Yes') {
-                                                 $homeOwnershipRelief = min($grossSalary * 0.2, $homeOwnershipDeposit);
-                                             }
+         // Calculate home ownership relief
+         $homeOwnershipRelief = 0;
+         if ($homeOwnership === 'Yes') {
+             $homeOwnershipRelief = min($grossSalary * 0.2, $homeOwnershipDeposit);
+         }
 
-                                             // Deduct reliefs from taxable income
-                                             $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
+         // Deduct reliefs from taxable income
+         $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
 
-                                             // Calculate PAYE based on tax slabs
-                                             $payeAmount = 0;
-                                             foreach ($taxSlabs as $slabIndex => $slab) {
-                                                 if ($taxableIncome > $slab[0]) {
-                                                     $payeAmount += ($slab[0] - $slab[1]) * $slab[0];
-                                                     $taxableIncome -= $slab[0];
-                                                 } else {
-                                                     $payeAmount += $taxableIncome * $slab[0];
-                                                     break;
-                                                 }
-                                             }
+         // Calculate PAYE based on tax slabs
+         $payeAmount = 0;
+         foreach ($taxSlabs as $slabIndex => $slab) {
+             if ($taxableIncome > $slab[0]) {
+                 $payeAmount += ($slab[0] - $slab[1]) * $slab[0];
+                 $taxableIncome -= $slab[0];
+             } else {
+                 $payeAmount += $taxableIncome * $slab[0];
+                 break;
+             }
+         }
                                         
-                                             // Calculate net salary
-                                             $netSalary = $grossSalary - $payeAmount;
+         // Calculate net salary
+         $netSalary = $grossSalary - $payeAmount;
 
-                                             // Display results
-                                             //  echo "Gross Pay: Kes " . number_format($grossSalary, 2) . "\n";
-                                             //  echo "<br>";
-                                             //  echo "Contribution Benefit: Kes " . number_format($contributionBenefit, 2) . "\n";
-                                             //  echo "<br>";
-                                             //  echo "Total Deductions: Kes " . number_format($contributionBenefit + $mortgageRelief + $insuranceRelief + $homeOwnershipRelief, 2) . "\n";
-                                             //  echo "<br>";
-                                             //  echo "Taxable Pay: Kes " . number_format($taxableIncome, 2) . "\n";
-                                             //  echo "<br>";
-                                             //  echo "Personal Relief: Kes 2,400.00\n";
-                                             //  echo "<br>";
-                                             //  echo "Insurance Relief: Kes 360.00\n";
-                                             //  echo "<br>";
-                                             //  echo "PAYE: Kes " . number_format($payeAmount, 2) . "\n";
-                                             //  echo "<br>";
-                                             //  echo "Net Salary: Kes " . number_format($netSalary, 2) . "\n";
+         // Display results
+         //  echo "Gross Pay: Kes " . number_format($grossSalary, 2) . "\n";
+         //  echo "<br>";
+         //  echo "Contribution Benefit: Kes " . number_format($contributionBenefit, 2) . "\n";
+         //  echo "<br>";
+         //  echo "Total Deductions: Kes " . number_format($contributionBenefit + $mortgageRelief + $insuranceRelief + $homeOwnershipRelief, 2) . "\n";
+         //  echo "<br>";
+         //  echo "Taxable Pay: Kes " . number_format($taxableIncome, 2) . "\n";
+         //  echo "<br>";
+         //  echo "Personal Relief: Kes 2,400.00\n";
+         //  echo "<br>";
+         //  echo "Insurance Relief: Kes 360.00\n";
+         //  echo "<br>";
+         //  echo "PAYE: Kes " . number_format($payeAmount, 2) . "\n";
+         //  echo "<br>";
+         //  echo "Net Salary: Kes " . number_format($netSalary, 2) . "\n";
 
-                                             echo "<table>";
-                                             echo "<tr>";
-                                             echo "<th>Description</th>";
-                                             echo "<th>Amount</th>";
-                                             echo "</tr>";
-                                             echo "<tr>";
-                                             echo "<td>Gross Salary</td>";
-                                             echo "<td>Kes " . number_format($grossSalary, 2) . "</td>";
-                                             echo "</tr>";
-                                             echo "<tr>";
-                                             echo "<td>Contribution Benefit     </td>";
-                                             echo "<td>Kes " . number_format($contributionBenefit, 2) . "</td>";
-                                             echo "</tr>";
-                                             echo "<tr>";
-                                             echo "<td>Total Deductions</td>";
-                                             echo "<td>Kes " .  number_format($contributionBenefit + $mortgageRelief + $insuranceRelief + $homeOwnershipRelief, 2)  . "</td>";
-                                             echo "</tr>";
-                                             echo "<tr>";
-                                             echo "<td>Taxable Pay</td>";
-                                             echo "<td>Kes " .  number_format($taxableIncome, 2) . "</td>";
-                                             echo "</tr>";
-                                             echo "<td>Personal Relief</td>";
-                                             echo "<td>Kes $insurancePremium</td>";
-                                             echo "</tr>";
-                                             echo "<td>PAYE</td>";
-                                             echo "<td>Kes " . number_format($payeAmount, 2) . " </td>";
-                                             echo "</tr>";
-                                             echo "<td>Net Salary</td>";
-                                             echo "<td>Kes " . number_format($netSalary, 2) . " </td>";
-                                             echo "</tr>";
-                                             echo "</table>";
+         echo "<table>";
+         echo "<tr>";
+         echo "<th>Description</th>";
+         echo "<th>Amount</th>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Gross Salary</td>";
+         echo "<td>Kes " . number_format($grossSalary, 2) . "</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Contribution Benefit     </td>";
+         echo "<td>Kes " . number_format($contributionBenefit, 2) . "</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Total Deductions</td>";
+         echo "<td>Kes " .  number_format($contributionBenefit + $mortgageRelief + $insuranceRelief + $homeOwnershipRelief, 2)  . "</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Taxable Pay</td>";
+         echo "<td>Kes " .  number_format($taxableIncome, 2) . "</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Personal Relief</td>";
+         echo "<td>Kes $insurancePremium</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Insurance Relief</td>";
+         echo "<td>Kes $insuranceRelief</td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>PAYE</td>";
+         echo "<td>Kes " . number_format($payeAmount, 2) . " </td>";
+         echo "</tr>";
+         echo "<tr>";
+         echo "<td>Net Salary</td>";
+         echo "<td>Kes " . number_format($netSalary, 2) . " </td>";
+         echo "</tr>";
+         echo "</table>";
 
-                                         } elseif(isset($_POST['form3'])) {
+     } elseif(isset($_POST['form3'])) {
                                     
-                                             // Code for processing Import Duty calculation
-                                             // Retrieve form input values
-                                             $manufacturingMonth = $_POST['manufacturing_month'];
-                                             // Add more variables as needed for the import duty calculation
-                                             // Calculate Import Duty amount (example calculation, you may need to replace this with actual calculation)
-                                             $importDutyAmount = 1000; // Adjust this formula based on your requirements
-                                             // Display the Import Duty calculation result
-                                             echo "Import Duty Calculation Result: $importDutyAmount";
+         // Code for processing Import Duty calculation
+         // Retrieve form input values
+         $manufacturingMonth = $_POST['manufacturing_month'];
+         // Add more variables as needed for the import duty calculation
+         // Calculate Import Duty amount (example calculation, you may need to replace this with actual calculation)
+         $importDutyAmount = 1000; // Adjust this formula based on your requirements
+         // Display the Import Duty calculation result
+         echo "Import Duty Calculation Result: $importDutyAmount";
 
-                                         } elseif(isset($_POST['form4'])) {
+     } elseif(isset($_POST['form4'])) {
                                     
-                                         } else {
+     } else {
 
-                                             // Display a default message or any other content when no form is submitted
-                                             echo "Select a Taxation calculation to perform.";
+         // Display a default message or any other content when no form is submitted
+         echo "Select a Taxation calculation to perform.";
 
-                                         }
+     }
 ?>
                                 </div>
                             </div>

@@ -31,7 +31,8 @@ foreach ($result as $row)
 
 ?>
 
-<div id="bootstrap-touch-slider" class="carousel bs-slider fade control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="false" >
+<div id="bootstrap-touch-slider" class="carousel bs-slider fade control-round indicators-line" data-ride="carousel"
+    data-pause="hover" data-interval="false">
 
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -42,8 +43,9 @@ foreach ($result as $row)
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {            
             ?>
-            <li data-target="#bootstrap-touch-slider" data-slide-to="<?php echo $i; ?>" <?php if($i==0) {echo 'class="active"';} ?>></li>
-            <?php
+        <li data-target="#bootstrap-touch-slider" data-slide-to="<?php echo $i; ?>"
+            <?php if($i==0) {echo 'class="active"';} ?>></li>
+        <?php
             $i++;
         }
         ?>
@@ -59,19 +61,26 @@ foreach ($result as $row)
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {            
             ?>
-            <div class="item <?php if($i==0) {echo 'active';} ?>" style="background-image:url(assets/uploads/<?php echo $row['photo']; ?>);">
-                <div class="bs-slider-overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
-                            <h1 data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>"><?php echo $row['heading']; ?></h1>
-                            <p data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo nl2br($row['content']); ?></p>
-                            <a href="<?php echo $row['button_url']; ?>" target="_blank"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo $row['button_text']; ?></a>
-                        </div>
+        <div class="item <?php if($i==0) {echo 'active';} ?>"
+            style="background-image:url(assets/uploads/<?php echo $row['photo']; ?>);">
+            <div class="bs-slider-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
+                        <h1
+                            data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>">
+                            <?php echo $row['heading']; ?></h1>
+                        <p
+                            data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>">
+                            <?php echo nl2br($row['content']); ?></p>
+                        <a href="<?php echo $row['button_url']; ?>" target="_blank" class="btn btn-primary"
+                            data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo $row['button_text']; ?></a>
                     </div>
                 </div>
             </div>
-            <?php
+        </div>
+        <?php
             $i++;
         }
         ?>
@@ -106,35 +115,38 @@ foreach ($result as $row)
             <div class="col-md-12">
 
                 <div class="product-carousel">
-                    
+
                     <?php
                     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_featured=? AND p_is_active=? LIMIT ".$total_featured_product_home);
                     $statement->execute(array(1,1));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
                         ?>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="photo" style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);"></div>
-                                <div class="overlay"></div>
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="photo"
+                                style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);">
                             </div>
-                            <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
-                                <h4>
-                                    Ksh<?php echo $row['p_current_price']; ?> 
-                                    <?php if($row['p_old_price'] != ''): ?>
-                                    <del>
-                                     <small> <i>Ksh<?php echo $row['p_old_price']; ?></i></small> 
-                                    </del>
-                                  <?php endif; ?> 
-                                    <br>  
-                                    <small>                                
-                                    Taxes: Custom: 16%<br>
-                                         Import Tax: 12%
-                                         </small> 
-                                </h4>
-                                <div class="rating">
-                                    <?php
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="text">
+                            <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a>
+                            </h3>
+                            <h4>
+                                Ksh<?php echo $row['p_current_price']; ?>
+                                <?php if($row['p_old_price'] != ''): ?>
+                                <del>
+                                    <small> <i>Ksh<?php echo $row['p_old_price']; ?></i></small>
+                                </del>
+                                <?php endif; ?>
+                                <br>
+                                <small>
+                                    <i>Tax Imposed Variat </i>
+                                </small>
+                                <?php echo $row['tax_imposed_variat']; ?>
+                            </h4>
+                            <div class="rating">
+                                <?php
                                     $t_rating = 0;
                                     $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
@@ -149,7 +161,7 @@ foreach ($result as $row)
                                         $avg_rating = $t_rating / $tot_rating;
                                     }
                                     ?>
-                                    <?php
+                                <?php
                                     if($avg_rating == 0) {
                                         echo '';
                                     }
@@ -192,28 +204,29 @@ foreach ($result as $row)
                                     else {
                                         for($i=1;$i<=5;$i++) {
                                             ?>
-                                            <?php if($i>$avg_rating): ?>
-                                                <i class="fa fa-star-o"></i>
-                                            <?php else: ?>
-                                                <i class="fa fa-star"></i>
-                                            <?php endif; ?>
-                                            <?php
+                                <?php if($i>$avg_rating): ?>
+                                <i class="fa fa-star-o"></i>
+                                <?php else: ?>
+                                <i class="fa fa-star"></i>
+                                <?php endif; ?>
+                                <?php
                                         }
                                     }
                                     ?>
-                                </div>
-
-                                <?php if($row['p_qty'] == 0): ?>
-                                    <div class="out-of-stock">
-                                        <div class="inner">
-                                            Out Of Stock
-                                        </div>
-                                    </div>
-                                <?php else: ?><p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Details</a></p>
-                                <?php endif; ?>
                             </div>
+
+                            <?php if($row['p_qty'] == 0): ?>
+                            <div class="out-of-stock">
+                                <div class="inner">
+                                    Out Of Stock
+                                </div>
+                            </div>
+                            <?php else: ?><p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i
+                                        class="fa fa-tags"></i> View Product Details</a></p>
+                            <?php endif; ?>
                         </div>
-                        <?php
+                    </div>
+                    <?php
                     }
                     ?>
                 </div>
@@ -246,23 +259,31 @@ foreach ($result as $row)
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
                         ?>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="photo" style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);"></div>
-                                <div class="overlay"></div>
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="photo"
+                                style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);">
                             </div>
-                            <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
-                                <h4>
-                                    Ksh<?php echo $row['p_current_price']; ?> 
-                                    <?php if($row['p_old_price'] != ''): ?>
-                                    <del>
-                                        Ksh<?php echo $row['p_old_price']; ?>
-                                    </del>
-                                    <?php endif; ?>
-                                </h4>
-                                <div class="rating">
-                                    <?php
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="text">
+                            <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a>
+                            </h3>
+                            <h4>
+                                Ksh<?php echo $row['p_current_price']; ?>
+                                <?php if($row['p_old_price'] != ''): ?>
+                                <del>
+                                    Ksh<?php echo $row['p_old_price']; ?>
+                                </del>
+                                <?php endif; ?>
+                                <br>
+                                <small>
+                                    <i>Tax Imposed Variat </i>
+                                </small>
+                                <?php echo $row['tax_imposed_variat']; ?>
+                            </h4>
+                            <div class="rating">
+                                <?php
                                     $t_rating = 0;
                                     $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
@@ -277,7 +298,7 @@ foreach ($result as $row)
                                         $avg_rating = $t_rating / $tot_rating;
                                     }
                                     ?>
-                                    <?php
+                                <?php
                                     if($avg_rating == 0) {
                                         echo '';
                                     }
@@ -320,28 +341,29 @@ foreach ($result as $row)
                                     else {
                                         for($i=1;$i<=5;$i++) {
                                             ?>
-                                            <?php if($i>$avg_rating): ?>
-                                                <i class="fa fa-star-o"></i>
-                                            <?php else: ?>
-                                                <i class="fa fa-star"></i>
-                                            <?php endif; ?>
-                                            <?php
+                                <?php if($i>$avg_rating): ?>
+                                <i class="fa fa-star-o"></i>
+                                <?php else: ?>
+                                <i class="fa fa-star"></i>
+                                <?php endif; ?>
+                                <?php
                                         }
                                     }
                                     ?>
-                                </div>
-                                <?php if($row['p_qty'] == 0): ?>
-                                    <div class="out-of-stock">
-                                        <div class="inner">
-                                            Out Of Stock
-                                        </div>
-                                    </div>
-                                <?php else: ?>
-                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Details</a></p>
-                                <?php endif; ?>
                             </div>
+                            <?php if($row['p_qty'] == 0): ?>
+                            <div class="out-of-stock">
+                                <div class="inner">
+                                    Out Of Stock
+                                </div>
+                            </div>
+                            <?php else: ?>
+                            <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View
+                                    Product Details</a></p>
+                            <?php endif; ?>
                         </div>
-                        <?php
+                    </div>
+                    <?php
                     }
                     ?>
 
@@ -377,23 +399,31 @@ foreach ($result as $row)
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
                         ?>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="photo" style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);"></div>
-                                <div class="overlay"></div>
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="photo"
+                                style="background-image:url(assets/uploads/<?php echo $row['p_featured_photo']; ?>);">
                             </div>
-                            <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
-                                <h4>
-                                    Ksh<?php echo $row['p_current_price']; ?> 
-                                    <?php if($row['p_old_price'] != ''): ?>
-                                    <del>
-                                        Ksh<?php echo $row['p_old_price']; ?>
-                                    </del>
-                                    <?php endif; ?>
-                                </h4>
-                                <div class="rating">
-                                    <?php
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="text">
+                            <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a>
+                            </h3>
+                            <h4>
+                                Ksh<?php echo $row['p_current_price']; ?>
+                                <?php if($row['p_old_price'] != ''): ?>
+                                <del>
+                                    Ksh<?php echo $row['p_old_price']; ?>
+                                </del>
+                                <?php endif; ?>
+                                <br>
+                                <small>
+                                    <i>Tax Imposed Variat </i>
+                                </small>
+                                <?php echo $row['tax_imposed_variat']; ?>
+                            </h4>
+                            <div class="rating">
+                                <?php
                                     $t_rating = 0;
                                     $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
@@ -408,7 +438,7 @@ foreach ($result as $row)
                                         $avg_rating = $t_rating / $tot_rating;
                                     }
                                     ?>
-                                    <?php
+                                <?php
                                     if($avg_rating == 0) {
                                         echo '';
                                     }
@@ -451,28 +481,29 @@ foreach ($result as $row)
                                     else {
                                         for($i=1;$i<=5;$i++) {
                                             ?>
-                                            <?php if($i>$avg_rating): ?>
-                                                <i class="fa fa-star-o"></i>
-                                            <?php else: ?>
-                                                <i class="fa fa-star"></i>
-                                            <?php endif; ?>
-                                            <?php
+                                <?php if($i>$avg_rating): ?>
+                                <i class="fa fa-star-o"></i>
+                                <?php else: ?>
+                                <i class="fa fa-star"></i>
+                                <?php endif; ?>
+                                <?php
                                         }
                                     }
                                     ?>
-                                </div>
-                                <?php if($row['p_qty'] == 0): ?>
-                                    <div class="out-of-stock">
-                                        <div class="inner">
-                                            Out Of Stock
-                                        </div>
-                                    </div>
-                                <?php else: ?>
-                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View Product Detials</a></p>
-                                <?php endif; ?>
                             </div>
+                            <?php if($row['p_qty'] == 0): ?>
+                            <div class="out-of-stock">
+                                <div class="inner">
+                                    Out Of Stock
+                                </div>
+                            </div>
+                            <?php else: ?>
+                            <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i> View
+                                    Product Detials</a></p>
+                            <?php endif; ?>
                         </div>
-                        <?php
+                    </div>
+                    <?php
                     }
                     ?>
 

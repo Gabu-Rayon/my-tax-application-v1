@@ -136,9 +136,11 @@ if (isset($_POST['form1'])) {
         							p_feature=?,
         							p_condition=?,
         							p_return_policy=?,
+                                    p_barcode=?,
         							p_is_featured=?,
         							p_is_active=?,
-        							ecat_id=?
+        							ecat_id=?,
+                                    tax_imposed_variat=?
 
         							WHERE p_id=?");
             $statement->execute(array(
@@ -152,19 +154,19 @@ if (isset($_POST['form1'])) {
                 $_POST['p_feature'],
                 $_POST['p_condition'],
                 $_POST['p_return_policy'],
+                $_POST['p_barcode'],
                 $_POST['p_is_featured'],
                 $_POST['p_is_active'],
                 $_POST['ecat_id'],
+                $_POST['p_tax_imposed'],
                 $_REQUEST['id']
             ));
         }
 
 
         if (isset($_POST['size'])) {
-
             $statement = $pdo->prepare("DELETE FROM tbl_product_size WHERE p_id=?");
             $statement->execute(array($_REQUEST['id']));
-
             foreach ($_POST['size'] as $value) {
                 $statement = $pdo->prepare("INSERT INTO tbl_product_size (size_id,p_id) VALUES (?,?)");
                 $statement->execute(array($value, $_REQUEST['id']));
@@ -187,7 +189,6 @@ if (isset($_POST['form1'])) {
             $statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
             $statement->execute(array($_REQUEST['id']));
         }
-
         $success_message = 'Product is updated successfully.';
     }
 }
@@ -238,6 +239,7 @@ foreach ($result as $row) {
     $p_is_active = $row['p_is_active'];
     $ecat_id = $row['ecat_id'];
 	$p_barcode = $row['p_barcode'];
+    $tax_imposed_variat = $row['tax_imposed_variat'];
 }
 
 $statement = $pdo->prepare("SELECT * 
@@ -254,6 +256,7 @@ foreach ($result as $row) {
     $mcat_id = $row['mcat_id'];
     $tcat_id = $row['tcat_id'];
 }
+
 
 $statement = $pdo->prepare("SELECT * FROM tbl_product_size WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
@@ -299,7 +302,8 @@ foreach ($result as $row) {
                         <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Product Bar Code <span>*</span></label>
                             <div class="col-sm-4">
-                                <input type="text" name="p_name" class="form-control" value="<?php echo $p_barcode; ?>">
+                                <input type="text" name="p_barcode" class="form-control"
+                                    value="<?php echo $p_barcode; ?>">
                             </div>
 
                         </div>
@@ -445,6 +449,33 @@ foreach ($result as $row) {
 													 ?>
                                     <option value="<?php echo $row['color_id']; ?>" <?php echo $is_select; ?>>
                                         <?php echo $row['color_name']; ?>
+                                    </option>
+                                    <?php
+									}
+									?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Select Tax Imposed Variat *</label>
+                            <div class="col-sm-4">
+                                <select name="p_tax_imposed" class="form-control select2" multiple="multiple">
+                                    <?php
+									$is_select = '';
+									$statement = $pdo->prepare("SELECT * FROM tbl_taxation_type ORDER BY tax_id ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										    if (isset($tax_id)) {
+												        if (in_array($row['tax_id'], $tax_id)) {
+														  $is_select = 'selected';
+													   } else {
+														 $is_select = '';
+													  }
+													   }
+													 ?>
+                                    <option value="<?php echo $row['tax_id']; ?>" <?php echo $is_select; ?>>
+                                        <?php echo $row['tax_type']; ?>
                                     </option>
                                     <?php
 									}

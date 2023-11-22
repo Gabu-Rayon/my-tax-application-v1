@@ -265,6 +265,25 @@ if(isset($_POST['form1'])) {
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Select Tax Imposed Variat *</label>
+                            <div class="col-sm-4">
+                                <select name="size[]" class="form-control select2" multiple="multiple">
+                                    <?php
+									$statement = $pdo->prepare("SELECT * FROM tbl_taxation_type ORDER BY tax_id ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										    ?>
+                                    <option value="<?php echo $row['tax_id']; ?>">
+                                        <?php echo $row['tax_type']; ?>
+                                    </option>
+                                    <?php
+									}
+									?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Select Size</label>
                             <div class="col-sm-4">
                                 <select name="size[]" class="form-control select2" multiple="multiple">

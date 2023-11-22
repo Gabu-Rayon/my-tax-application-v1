@@ -268,16 +268,16 @@ th {
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
                                                       $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                      $statement->execute();
+                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                      foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['month']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
 
@@ -286,17 +286,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Manufacturing Year</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['year']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -304,17 +304,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Maker</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['vehicle_makers']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
 
@@ -323,17 +323,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['body_type']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -373,17 +373,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer_m" class="form-control ">
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['month']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
 
@@ -392,17 +392,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer_y" class="form-control ">
                                                     <option value="">Select Vehicle Manufacturing Year</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['year']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -410,17 +410,17 @@ foreach ($result as $row) {
                                                 <select name="manafacturer_c" class="form-control ">
                                                     <option value="">Select Vehicle Maker</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                        ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['motor_cycle_makers']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
 
@@ -429,17 +429,18 @@ foreach ($result as $row) {
                                                 <select name="body_t" class="form-control ">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
-     $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($result as $row) {
-    ?>
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['motor_cycle_body_type']; ?>
                                                     </option>
                                                     <?php
-}
-?>
+                                                    }
+                                                    
+                                                ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">

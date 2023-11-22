@@ -1,10 +1,10 @@
 <?php require_once('header.php'); ?>
 
 <?php
-if (!isset($_REQUEST['id'])) {
+if (!isset($_REQUEST['id']) && !isset($_GET['bar_code'])) {
     header('location: index.php');
     exit;
-} else {
+} elseif (isset($_REQUEST['id'])) {
     // Check the id is valid or not
     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
     $statement->execute(array($_REQUEST['id']));
@@ -14,9 +14,7 @@ if (!isset($_REQUEST['id'])) {
         header('location: index.php');
         exit;
     }
-}
-
-if (isset($_GET['bar_code'])) {
+} elseif (isset($_GET['bar_code'])) {
     $barcode = $_GET['bar_code'];
 
     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE barcode = ?");
@@ -32,9 +30,10 @@ if (isset($_GET['bar_code'])) {
         echo "<script>alert('Product not found.')</script>";
     }
 } else {
-    // Handle the case when no barcode is provided
-    echo "<script>alert('Barcode not provided.')</script>";
+    // Handle the case when neither id nor barcode is provided
+    echo "<script>alert('Invalid request.')</script>";
 }
+
 
 foreach ($result as $row) {
     $p_name = $row['p_name'];

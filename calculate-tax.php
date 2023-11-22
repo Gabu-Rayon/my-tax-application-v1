@@ -268,16 +268,16 @@ th {
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
                                                       $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['month']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
 
@@ -286,17 +286,17 @@ th {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Manufacturing Year</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['year']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -304,17 +304,17 @@ th {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Maker</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['vehicle_makers']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
 
@@ -323,30 +323,30 @@ th {
                                                 <select name="manafacturer" class="form-control ">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['body_type']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Model*: </label>
                                                 <input class="form-control" type="text" name="vehicle_model"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                    placeholder="e.g. A5 TDI">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Engine Size*: <i><small>In Cc</small></i>
                                                 </label>
-                                                <input class="form-control" type="number" name="vehicle_weight" min="1"
-                                                    max="40" value="0">
+                                                <input class="form-control" type="number" name="vehicle_weight"
+                                                    placeholder=" e.g. 1800 cc" max="40" value="0">
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>
@@ -370,20 +370,20 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Month of Manufacture *: </label>
-                                                <select name="manafacturer_month" class="form-control ">
+                                                <select name="manafacturer_m" class="form-control ">
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['month']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
 
@@ -392,67 +392,67 @@ th {
                                                 <select name="manafacturer_y" class="form-control ">
                                                     <option value="">Select Vehicle Manufacturing Year</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['year']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Make *: </label>
-                                                <select name="manafacturer_m" class="form-control ">
+                                                <select name="manafacturer_c" class="form-control ">
                                                     <option value="">Select Vehicle Maker</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['motor_cycle_makers']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Body Type*: </label>
-                                                <select name="body_type_m" class="form-control ">
+                                                <select name="body_t" class="form-control ">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
-                                                      $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
-                                                      $statement->execute();
-                                                      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach ($result as $row) {
-                                                    ?>
+     $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                                     <option value="<?php echo $row['id']; ?>">
                                                         <?php echo $row['motor_cycle_body_type']; ?>
                                                     </option>
                                                     <?php
-                                                    }
-                                                 ?>
+}
+?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Model*: </label>
                                                 <input class="form-control" type="text" name="motor_model"
-                                                    placeholder="Income eg Ksh 600,000">
+                                                    placeholder="e.g. A5 TDI">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Engine Size*: <i><small>In Cc</small></i>
                                                 </label>
-                                                <input class="form-control" type="number" name="motor_weight" min="1"
-                                                    max="40" value="0">
+                                                <input class="form-control" type="number" name="motor_weight"
+                                                    placeholder=" e.g. 1800 CC">
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>
@@ -648,21 +648,75 @@ th {
          echo "</tr>";
          echo "</table>";
 
-     } elseif(isset($_POST['form3'])) {
-                                    
-         // Code for processing Import Duty calculation
-         // Retrieve form input values
-         $manufacturingMonth = $_POST['manufacturing_month'];
-         // Add more variables as needed for the import duty calculation
-         // Calculate Import Duty amount (example calculation, you may need to replace this with actual calculation)
-         $importDutyAmount = 1000; // Adjust this formula based on your requirements
-         // Display the Import Duty calculation result
-         echo "Import Duty Calculation Result: $importDutyAmount";
-
-     } elseif(isset($_POST['form4'])) {
-                                    
+     } elseif (isset($_POST['form3'])) {
+         // Import duty calculation for Motor Vehicle
+     
+         $manufacturing_month = $_POST['manafacturer'];
+         $manufacturing_year = $_POST['manafacturer_y'];
+         $manufacturer = $_POST['manafacturer_c'];
+         $body_type = $_POST['body_t'];
+         $vehicle_model = $_POST['vehicle_model'];
+         $vehicle_weight = $_POST['vehicle_weight'];
+     
+         // Assuming fixed values for calculations (you may adjust these based on your requirements)
+         $depreciation_rate = 0.30;
+     
+         // Perform your import duty calculation logic here
+         // ...
+     
+         // Example output (replace this with your actual calculation results)
+         $import_duty_result = array(
+             'CRSP' => 'Kes 3,761,368.00',
+             'Customs_Value_CIF' => 'Kes 2,106,366.08',
+             'Depreciation_Value' => '30% Depreciation',
+             'Import_Duty' => 'Kes 0.00',
+             'Excise_Value' => 'Kes 0.00',
+             'VAT_Value' => 'Kes 0.00',
+             'Total_Taxes' => 'Kes 0.00',
+             'Import_Licence_IDF_Fee' => 'Kes 0.00',
+             'Railways_Development_Levy' => 'Kes 0.00',
+             'Total_Taxes_and_Levies' => 'Kes 0.00'
+         );
+     
+         // Output the calculation results
+         echo '<pre>';
+         print_r($import_duty_result);
+         echo '</pre>';
+     } elseif (isset($_POST['form4'])) {
+         // Import duty calculation for Motor Cycle
+     
+         $manufacturing_month = $_POST['manafacturer_m'];
+         $manufacturing_year = $_POST['manafacturer_y'];
+         $manufacturer_c = $_POST['manafacturer_c'];
+         $body_t = $_POST['body_t'];
+         $motor_model = $_POST['motor_model'];
+         $motor_weight = $_POST['motor_weight'];
+     
+         // Assuming fixed values for calculations (you may adjust these based on your requirements)
+         $depreciation_rate = 0.30;
+     
+         // Perform your import duty calculation logic here
+         // ...
+     
+         // Example output (replace this with your actual calculation results)
+         $import_duty_result = array(
+             'CRSP' => 'Kes 3,761,368.00',
+             'Customs_Value_CIF' => 'Kes 2,106,366.08',
+             'Depreciation_Value' => '30% Depreciation',
+             'Import_Duty' => 'Kes 0.00',
+             'Excise_Value' => 'Kes 0.00',
+             'VAT_Value' => 'Kes 0.00',
+             'Total_Taxes' => 'Kes 0.00',
+             'Import_Licence_IDF_Fee' => 'Kes 0.00',
+             'Railways_Development_Levy' => 'Kes 0.00',
+             'Total_Taxes_and_Levies' => 'Kes 0.00'
+         );
+     
+         // Output the calculation results
+         echo '<pre>';
+         print_r($import_duty_result);
+         echo '</pre>';
      } else {
-
          // Display a default message or any other content when no form is submitted
          echo "Select a Taxation calculation to perform.";
 

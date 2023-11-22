@@ -24,7 +24,7 @@
                                 <th width="60">(C) Price</th>
                                 <th width="60">Quantity</th>
                                 <th>Featured?</th>
-                                <th>Taxes Imposed</th>
+                                <th>Taxes Imposed Variat</th>
                                 <th>Product BarCode</th>
                                 <th>Active?</th>
                                 <th>Category</th>
@@ -45,6 +45,7 @@
 														t1.p_is_active,
 														t1.p_barcode,
 														t1.ecat_id,
+                                                        t1.tax_imposed_variat,
 
 														t2.ecat_id,
 														t2.ecat_name,
@@ -90,7 +91,7 @@
 									} ?>
                                 </td>
                                 <td>
-                                    <?php Echo "Taxes Imposed"; ?>
+                                    <?php echo $row['tax_imposed_variat']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['p_barcode']; ?>

@@ -461,20 +461,13 @@ foreach ($result as $row) {
                             <div class="col-sm-4">
                                 <select name="p_tax_imposed" class="form-control select2" multiple="multiple">
                                     <?php
-									$is_select = '';
 									$statement = $pdo->prepare("SELECT * FROM tbl_taxation_type ORDER BY tax_id ASC");
 									$statement->execute();
 									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 									foreach ($result as $row) {
-										    if (isset($tax_id)) {
-												        if (in_array($row['tax_id'], $tax_id)) {
-														  $is_select = 'selected';
-													   } else {
-														 $is_select = '';
-													  }
-													   }
 													 ?>
-                                    <option value="<?php echo $row['tax_id']; ?>" <?php echo $is_select; ?>>
+                                    <option value="<?php echo $row['tax_id']; ?>"
+                                        <?php if ($row['tax_type'] == $tax_imposed_variat) echo 'selected'; ?>>
                                         <?php echo $row['tax_type']; ?>
                                     </option>
                                     <?php

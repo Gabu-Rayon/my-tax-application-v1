@@ -12,27 +12,7 @@ foreach ($result as $row) {
     $calculate_tax_banner = $row['calculate_tax_banner'];
 }
 ?>
-<style>
-.hidden-form {
-    display: none;
-}
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th,
-td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-</style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $calculate_tax_banner; ?>);">
     <div class="inner">
         <h1><?php echo $calculate_tax_title; ?></h1>
@@ -475,7 +455,7 @@ th {
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Body Type*: </label>
                                                 <select name="body_t" class="select2 ">
-                                                    <option value="">Select Vehicle Body Type</option>
+                                                    <option value="">Select Motor Cycle Body Type</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
                                                          $statement->execute();
@@ -493,15 +473,45 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Model*: </label>
-                                                <input class="form-control" type="text" name="motor_model"
-                                                    placeholder="e.g. A5 TDI">
+
+                                                <select name="motor_model" class="select2">
+                                                    <option value="">Select Motor Cycle Model</option>
+                                                    <?php
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_models ORDER BY motor_cycle_model ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['motor_cycle_model_id']; ?>">
+                                                        <?php echo $row['motor_cycle_model']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    
+                                                ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Engine Size*: <i><small>In Cc</small></i>
                                                 </label>
-                                                <input class="form-control" type="number" name="motor_weight"
-                                                    placeholder=" e.g. 1800 CC">
+
+                                                <select name="motor_weight" class="select2">
+                                                    <option value="">Select Motor Cycle Model</option>
+                                                    <?php
+                                                         $statement = $pdo->prepare("SELECT * FROM  tbl_motor_cycle_engine_size ORDER BY motor_cycle_engine_size ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['motor_cycle_engine_id']; ?>">
+                                                        <?php echo $row['motor_cycle_engine_size']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    
+                                                ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>
@@ -531,7 +541,7 @@ th {
          $vatDivisor = 1 + ($vatRate / 100);
          $priceBeforeVat = $grossIncome / $vatDivisor;
          $vatAmount = $grossIncome - $priceBeforeVat;
-                                          
+         echo "<div id='resultTable'>";                             
          echo "<table>";
          echo "<tr>";
          echo "<th>Parameter</th>";
@@ -570,6 +580,9 @@ th {
          }
                                           
          echo "</table>";
+         echo "</div>";
+         echo "<button onclick='printContent(\"resultTable\")'   class=\"btn btn-success\">Print</button>";
+
      } elseif (isset($_POST['form2'])) {
 
                                          
@@ -653,7 +666,7 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
     // Calculate net salary
     $netSalary = $grossSalary - $payeAmount;
 
-
+    echo "<div id='resultTable'>";
          echo "<table>";
          echo "<tr>";
          echo "<th>Description</th>";
@@ -701,7 +714,9 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
             <a href='https://www.pesabazaar.com/'>pesabazaar</a> </td>";
          echo "</tr>";
          echo "</table>";
-
+         echo "</div>";
+         echo "<button onclick='printContent(\"resultTable\")'   class=\"btn btn-success\">Print</button>";
+     
      } elseif  (isset($_POST['form3'])) {
         // Retrieve form input values
         $vehiclePrice = floatval(str_replace(',', '', $_POST['vehicle_price']));
@@ -735,6 +750,7 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
         $rdlFee = $customsValue * 0.02;
     
         // Display results in a table
+        echo "<div id='resultTable'>";
         echo "<table>";
         echo "<tr><th>Description</th><th>Amount</th></tr>";
         echo "<tr><td>CRSP Value</td><td>Kes $vehiclePrice</td></tr>";
@@ -769,6 +785,8 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
          RDL Fee is 2% of the Customs Value.</td>";
          echo "</tr>";
         echo "</table>";
+        echo "</div>";
+        echo "<button onclick='printContent(\"resultTable\")'   class=\"btn btn-success\">Print</button>";
     } elseif (isset($_POST['form4'])) {
          // Import duty calculation for Motor Cycle
         // Retrieve form input values
@@ -803,6 +821,7 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
         $motor_rdlFee = $motorcustomsValue * 0.02;
     
         // Display results in a table
+        echo "<div id='resultTable'>";
         echo "<table>";
         echo "<tr><th>Description</th><th>Amount</th></tr>";
         echo "<tr><td>CRSP Value</td><td>Kes $motorCyclePrice</td></tr>";
@@ -837,6 +856,9 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
          RDL Fee is 2% of the Customs Value.</td>";
          echo "</tr>";
         echo "</table>";
+        echo "</div>";
+        echo "<button onclick='printContent(\"resultTable\")'   class=\"btn btn-success\">Print</button>";
+     
      } else {
          // Display a default message or any other content when no form is submitted
          echo "Select a Taxation calculation to perform.";
@@ -935,6 +957,16 @@ homeNo.addEventListener('click', () => {
     homeOwnershipDepositId.style.display = 'none';
     homeYes.checked = false; // Explicitly uncheck YES when NO is selected
 });
+
+
+//to pri the taxation calculation
+function printContent(el) {
+    var restorePage = document.body.innerHTML;
+    var printContent = document.getElementById(el).outerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = restorePage;
+}
 </script>
 
 <?php require_once('footer.php'); ?>

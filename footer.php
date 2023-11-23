@@ -17,12 +17,12 @@ foreach ($result as $row) {
 
 
 <?php if ($newsletter_on_off == 1) : ?>
-	<section class="home-newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="single">
-						<?php
+<section class="home-newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="single">
+                    <?php
 						if (isset($_POST['form_subscribe'])) {
 
 							if (empty($_POST['email_subscribe'])) {
@@ -89,39 +89,41 @@ This link will be active only for 24 hours.
 							echo "<script>alert('" . $success_message1 . "')</script>";
 						}
 						?>
-						<form action="" method="post">
-							<?php $csrf->echoInputField(); ?>
-							<h2><?php echo LANG_VALUE_93; ?></h2>
-							<div class="input-group">
-								<input type="email" class="form-control" placeholder="<?php echo LANG_VALUE_95; ?>" name="email_subscribe">
-								<span class="input-group-btn">
-									<button class="btn btn-theme" type="submit" name="form_subscribe"><?php echo LANG_VALUE_92; ?></button>
-								</span>
-							</div>
-					</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
+                    <form action="" method="post">
+                        <?php $csrf->echoInputField(); ?>
+                        <h2><?php echo LANG_VALUE_93; ?></h2>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="<?php echo LANG_VALUE_95; ?>"
+                                name="email_subscribe">
+                            <span class="input-group-btn">
+                                <button class="btn btn-theme" type="submit"
+                                    name="form_subscribe"><?php echo LANG_VALUE_92; ?></button>
+                            </span>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 <?php endif; ?>
 
 
 
 
 <div class="footer-bottom">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 copyright">
-				<?php echo $footer_copyright; ?>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 copyright">
+                <?php echo $footer_copyright; ?>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <a href="#" class="scrollup">
-	<i class="fa fa-angle-up"></i>
+    <i class="fa fa-angle-up"></i>
 </a>
 
 <?php
@@ -147,93 +149,96 @@ foreach ($result as $row) {
 <script src="assets/js/bootstrap-touch-slider.js"></script>
 <script src="assets/js/select2.full.min.js"></script>
 <script src="assets/js/custom.js"></script>
+<script src="assets/js/calculator.js"></script>
 <script>
-	function confirmDelete() {
-		return confirm("Sure you want to delete this data?");
-	}
-	$(document).ready(function() {
-		advFieldsStatus = $('#advFieldsStatus').val();
+function confirmDelete() {
+    return confirm("Sure you want to delete this data?");
+}
+$(document).ready(function() {
+    advFieldsStatus = $('#advFieldsStatus').val();
 
-		$('#paypal_form').hide();
-		$('#stripe_form').hide();
-		$('#bank_form').hide();
+    $('#paypal_form').hide();
+    $('#stripe_form').hide();
+    $('#bank_form').hide();
 
-		$('#advFieldsStatus').on('change', function() {
-			advFieldsStatus = $('#advFieldsStatus').val();
-			if (advFieldsStatus == '') {
-				$('#paypal_form').hide();
-				$('#stripe_form').hide();
-				$('#bank_form').hide();
-			} else if (advFieldsStatus == 'PayPal') {
-				$('#paypal_form').show();
-				$('#stripe_form').hide();
-				$('#bank_form').hide();
-			} else if (advFieldsStatus == 'Stripe') {
-				$('#paypal_form').hide();
-				$('#stripe_form').show();
-				$('#bank_form').hide();
-			} else if (advFieldsStatus == 'Bank Deposit') {
-				$('#paypal_form').hide();
-				$('#stripe_form').hide();
-				$('#bank_form').show();
-			}
-		});
-	});
-
-
-	$(document).on('submit', '#stripe_form', function() {
-		// createToken returns immediately - the supplied callback submits the form if there are no errors
-		$('#submit-button').prop("disabled", true);
-		$("#msg-container").hide();
-		Stripe.card.createToken({
-			number: $('.card-number').val(),
-			cvc: $('.card-cvc').val(),
-			exp_month: $('.card-expiry-month').val(),
-			exp_year: $('.card-expiry-year').val()
-			// name: $('.card-holder-name').val()
-		}, stripeResponseHandler);
-		return false;
-	});
-	Stripe.setPublishableKey('<?php echo $stripe_public_key; ?>');
-
-	function stripeResponseHandler(status, response) {
-		if (response.error) {
-			$('#submit-button').prop("disabled", false);
-			$("#msg-container").html('<div style="color: red;border: 1px solid;margin: 10px 0px;padding: 5px;"><strong>Error:</strong> ' + response.error.message + '</div>');
-			$("#msg-container").show();
-		} else {
-			var form$ = $("#stripe_form");
-			var token = response['id'];
-			form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
-			form$.get(0).submit();
-		}
-	}
-
-	 // Initialize Quagga for barcode scanning
-	 Quagga.init({
-        inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            target: document.querySelector("#scanner"),
-        },
-        decoder: {
-            readers: ["ean_reader", "code_128_reader"],
-        },
+    $('#advFieldsStatus').on('change', function() {
+        advFieldsStatus = $('#advFieldsStatus').val();
+        if (advFieldsStatus == '') {
+            $('#paypal_form').hide();
+            $('#stripe_form').hide();
+            $('#bank_form').hide();
+        } else if (advFieldsStatus == 'PayPal') {
+            $('#paypal_form').show();
+            $('#stripe_form').hide();
+            $('#bank_form').hide();
+        } else if (advFieldsStatus == 'Stripe') {
+            $('#paypal_form').hide();
+            $('#stripe_form').show();
+            $('#bank_form').hide();
+        } else if (advFieldsStatus == 'Bank Deposit') {
+            $('#paypal_form').hide();
+            $('#stripe_form').hide();
+            $('#bank_form').show();
+        }
     });
+});
 
-    Quagga.onDetected(function(result) {
-        // Handle the detected barcode data
-        var detectedBarcode = result.codeResult.code;
 
-        // Redirect to product.php with the detected barcode
-        window.location.href = "product.php?bar_code=" + detectedBarcode;
-    });
+$(document).on('submit', '#stripe_form', function() {
+    // createToken returns immediately - the supplied callback submits the form if there are no errors
+    $('#submit-button').prop("disabled", true);
+    $("#msg-container").hide();
+    Stripe.card.createToken({
+        number: $('.card-number').val(),
+        cvc: $('.card-cvc').val(),
+        exp_month: $('.card-expiry-month').val(),
+        exp_year: $('.card-expiry-year').val()
+        // name: $('.card-holder-name').val()
+    }, stripeResponseHandler);
+    return false;
+});
+Stripe.setPublishableKey('<?php echo $stripe_public_key; ?>');
 
-    // Function to start barcode scanning when the button is clicked
-    function startBarcodeScanning() {
-        // Start the Quagga scanner
-        Quagga.start();
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        $('#submit-button').prop("disabled", false);
+        $("#msg-container").html(
+            '<div style="color: red;border: 1px solid;margin: 10px 0px;padding: 5px;"><strong>Error:</strong> ' +
+            response.error.message + '</div>');
+        $("#msg-container").show();
+    } else {
+        var form$ = $("#stripe_form");
+        var token = response['id'];
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+        form$.get(0).submit();
     }
+}
+
+// Initialize Quagga for barcode scanning
+Quagga.init({
+    inputStream: {
+        name: "Live",
+        type: "LiveStream",
+        target: document.querySelector("#scanner"),
+    },
+    decoder: {
+        readers: ["ean_reader", "code_128_reader"],
+    },
+});
+
+Quagga.onDetected(function(result) {
+    // Handle the detected barcode data
+    var detectedBarcode = result.codeResult.code;
+
+    // Redirect to product.php with the detected barcode
+    window.location.href = "product.php?bar_code=" + detectedBarcode;
+});
+
+// Function to start barcode scanning when the button is clicked
+function startBarcodeScanning() {
+    // Start the Quagga scanner
+    Quagga.start();
+}
 </script>
 <?php echo $before_body; ?>
 </body>

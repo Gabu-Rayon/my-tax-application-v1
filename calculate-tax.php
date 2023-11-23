@@ -53,7 +53,7 @@ th {
                         <li><a href="product-category.php"> Calculate Tax</a></li>
                         <li>> </li>
                         <li>
-                            <select id="calculationSelect" class="form-control select2 mid-cat" onchange="showForm()">
+                            <select id="calculationSelect" class="form-control select2 " onchange="showForm()">
                                 <option>Select Calculation Tax .. .</option>
                                 <option value="vatModal">VAT Calculator</option>
                                 <option value="payeModal">Paye As You Earn (PAYE)</option>
@@ -122,8 +122,21 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Year of taxation *: </label>
-                                                <input class="form-control" type="text" id="yearInput"
-                                                    pattern="[0-9]{4}" name="year_taxation" placeholder="2023">
+                                                <select name="year_taxation" class=" select2 mid-cat2">
+                                                    <option value="">Select Year of taxation *</option>
+                                                    <?php
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['id']; ?>">
+                                                        <?php echo $row['year']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -261,10 +274,14 @@ th {
                                             Motor Vehicle Import Duty
                                         </div>
                                         <div class="col-md-8">
-
+                                            <div class="form-group">
+                                                <label for=""> Motor Cycle Model*: </label>
+                                                <input class="form-control" type="text" name="vehicle_price"
+                                                    placeholder="e.g. Kes 1 200 000">
+                                            </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Month of Manufacture *: </label>
-                                                <select name="manafacturer" class="form-control ">
+                                                <select name="manufacturing_month" class="select2 ">
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
                                                       $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
@@ -283,7 +300,7 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Year of Manufacture *: </label>
-                                                <select name="manafacturer" class="form-control ">
+                                                <select name="manufacturing_year" class="select2 ">
                                                     <option value="">Select Vehicle Manufacturing Year</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
@@ -301,8 +318,8 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Make *: </label>
-                                                <select name="manafacturer" class="form-control ">
-                                                    <option value="">Select Vehicle Maker</option>
+                                                <select name="manufacturer" class=" select2 ">
+                                                    <option value="">Select Vehicle Manufacturer</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_makers ORDER BY vehicle_makers ASC");
                                                          $statement->execute();
@@ -320,10 +337,10 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Body Type*: </label>
-                                                <select name="manafacturer" class="form-control ">
+                                                <select name="body_type" class="select2">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
-                                                         $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type ORDER BY body_type ASC");
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_body_type");
                                                          $statement->execute();
                                                          $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                                          foreach ($result as $row) {
@@ -338,15 +355,42 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Vehicle Model*: </label>
-                                                <input class="form-control" type="text" name="vehicle_model"
-                                                    placeholder="e.g. A5 TDI">
+                                                <select name="vehicle_model" class="select2">
+                                                    <option value="">Select Vehicle Model Type *</option>
+                                                    <?php
+                                                         $statement = $pdo->prepare("SELECT * FROM  tbl_vehicle_models");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['model_id']; ?>">
+                                                        <?php echo $row['vehicle_model']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for=""> Vehicle Engine Size*: <i><small>In Cc</small></i>
                                                 </label>
-                                                <input class="form-control" type="number" name="vehicle_weight"
-                                                    placeholder=" e.g. 1800 cc" max="40" value="0">
+
+                                                <select name="vehicle_weight" class="select2">
+                                                    <option value="">Select Vehicle Engine Size *</option>
+                                                    <?php
+                                                         $statement = $pdo->prepare("SELECT * FROM tbl_vehicle_engine_size");
+                                                         $statement->execute();
+                                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                                         foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?php echo $row['engine_id']; ?>">
+                                                        <?php echo $row['engine_size']; ?> Cc
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for=""></label>
@@ -370,7 +414,7 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Month of Manufacture *: </label>
-                                                <select name="manafacturer_m" class="form-control ">
+                                                <select name="manafacturer_m" class="select2 ">
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
@@ -389,8 +433,8 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Year of Manufacture *: </label>
-                                                <select name="manafacturer_y" class="form-control ">
-                                                    <option value="">Select Vehicle Manufacturing Year</option>
+                                                <select name="manafacturer_y" class="select2 ">
+                                                    <option value="">Select Motor Cycle Manufacturing Year</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
                                                          $statement->execute();
@@ -407,8 +451,8 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Make *: </label>
-                                                <select name="manafacturer_c" class="form-control ">
-                                                    <option value="">Select Vehicle Maker</option>
+                                                <select name="manafacturer_c" class=" select2 ">
+                                                    <option value="">Select Motor Cycle Maker</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
                                                          $statement->execute();
@@ -426,7 +470,7 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Body Type*: </label>
-                                                <select name="body_t" class="form-control ">
+                                                <select name="body_t" class="select2 ">
                                                     <option value="">Select Vehicle Body Type</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_motor_cycle_body_type ORDER BY motor_cycle_body_type ASC");
@@ -527,7 +571,9 @@ th {
                                          
          // Retrieve form input values
          $year = $_POST['year_taxation'];
-         $paymentPeriod = $_POST['p_monthly'] ? 'Monthly' : 'Yearly';
+        //  $paymentPeriod = $_POST['p_monthly'] ? 'Monthly' : 'Yearly';
+         $paymentPeriod = isset($_POST['p_monthly']) ? 'Monthly' : (isset($_POST['p_yearly']) ? 'Yearly' : '');
+
                                          
          $grossSalary = str_replace(',', '', $_POST['grossIncome']);
          $contributionBenefit = $_POST['contribution_benefit'];
@@ -546,11 +592,12 @@ th {
 
          // Define tax slabs and corresponding percentages
          $taxSlabs = [
-             [170000, 0.1],
-             [240000, 0.25],
-             [320000, 0.3],
-             [99999999, 0.32],
-         ];
+            [12298, 0.1],
+            [23885, 0.15],
+            [35472, 0.2],
+            [47059, 0.25],
+            [99999999, 0.3],
+        ];
 
          // Calculate taxable income
          $taxableIncome = $grossSalary - $contributionBenefit;
@@ -560,55 +607,48 @@ th {
              $taxableIncome -= 10000;
          }
 
-         // Calculate mortgage relief
-         $mortgageRelief = 0;
-         if ($mortgagePlan === 'Yes') {
-             $mortgageRelief = min($grossSalary * 0.25, $mortgageInterest);
-         }
+   // Calculate mortgage relief
+$mortgageRelief = 0;
+if ($mortgagePlan === 'Yes') {
+    $mortgageRelief = min($grossSalary * 0.25, $mortgageInterest);
+}
 
-         // Calculate insurance relief
-         $insuranceRelief = min($grossSalary * 0.07, $insurancePremium);
+// Ensure $mortgageRelief is numeric
+$mortgageRelief = is_numeric($mortgageRelief) ? $mortgageRelief : 0;
 
-         // Calculate home ownership relief
-         $homeOwnershipRelief = 0;
-         if ($homeOwnership === 'Yes') {
-             $homeOwnershipRelief = min($grossSalary * 0.2, $homeOwnershipDeposit);
-         }
+// Calculate insurance relief
+$insuranceRelief = min($grossSalary * 0.07, $insurancePremium);
 
-         // Deduct reliefs from taxable income
-         $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
+// Ensure $insuranceRelief is numeric
+$insuranceRelief = is_numeric($insuranceRelief) ? $insuranceRelief : 0;
 
-         // Calculate PAYE based on tax slabs
-         $payeAmount = 0;
-         foreach ($taxSlabs as $slabIndex => $slab) {
-             if ($taxableIncome > $slab[0]) {
-                 $payeAmount += ($slab[0] - $slab[1]) * $slab[0];
-                 $taxableIncome -= $slab[0];
-             } else {
-                 $payeAmount += $taxableIncome * $slab[0];
-                 break;
-             }
-         }
-                                        
-         // Calculate net salary
-         $netSalary = $grossSalary - $payeAmount;
+// Calculate home ownership relief
+$homeOwnershipRelief = 0;
+if ($homeOwnership === 'Yes') {
+    $homeOwnershipRelief = min($grossSalary * 0.2, $homeOwnershipDeposit);
+}
 
-         // Display results
-         //  echo "Gross Pay: Kes " . number_format($grossSalary, 2) . "\n";
-         //  echo "<br>";
-         //  echo "Contribution Benefit: Kes " . number_format($contributionBenefit, 2) . "\n";
-         //  echo "<br>";
-         //  echo "Total Deductions: Kes " . number_format($contributionBenefit + $mortgageRelief + $insuranceRelief + $homeOwnershipRelief, 2) . "\n";
-         //  echo "<br>";
-         //  echo "Taxable Pay: Kes " . number_format($taxableIncome, 2) . "\n";
-         //  echo "<br>";
-         //  echo "Personal Relief: Kes 2,400.00\n";
-         //  echo "<br>";
-         //  echo "Insurance Relief: Kes 360.00\n";
-         //  echo "<br>";
-         //  echo "PAYE: Kes " . number_format($payeAmount, 2) . "\n";
-         //  echo "<br>";
-         //  echo "Net Salary: Kes " . number_format($netSalary, 2) . "\n";
+// Ensure $homeOwnershipRelief is numeric
+$homeOwnershipRelief = is_numeric($homeOwnershipRelief) ? $homeOwnershipRelief : 0;
+
+// Deduct reliefs from taxable income
+$taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
+ 
+    // Calculate PAYE based on tax slabs
+    $payeAmount = 0;
+    foreach ($taxSlabs as $slab) {
+        if ($taxableIncome > $slab[0]) {
+            $payeAmount += $slab[0] * $slab[1];
+            $taxableIncome -= $slab[0];
+        } else {
+            $payeAmount += $taxableIncome * $slab[1];
+            break;
+        }
+    }
+
+    // Calculate net salary
+    $netSalary = $grossSalary - $payeAmount;
+
 
          echo "<table>";
          echo "<tr>";
@@ -647,76 +687,152 @@ th {
          echo "<td>Net Salary</td>";
          echo "<td>Kes " . number_format($netSalary, 2) . " </td>";
          echo "</tr>";
+         echo "<td>What is this PAYE income tax calculator?</td>";
+         echo "<td>This is an independent calculator to help the public quickly
+          understand and calculate Pay As You Earn (PAYE) income tax in Kenya as set out by the 
+          Kenya Revenue Authority (KRA). Employees and employers alike can use this calculator to under the statutory contributions
+           liable under the income tax system of Kenya.
+         Note : This KRA income tax calculator has been updated to include the new KRA income tax rates effective 1st January 
+         2018 and allows comparison with the salary income tax rates for the year ending 31st December, 2017. For more visit:
+            <a href='https://www.pesabazaar.com/'>pesabazaar</a> </td>";
+         echo "</tr>";
          echo "</table>";
 
-     } elseif (isset($_POST['form3'])) {
-         // Import duty calculation for Motor Vehicle
-     
-         $manufacturing_month = $_POST['manafacturer'];
-         $manufacturing_year = $_POST['manafacturer_y'];
-         $manufacturer = $_POST['manafacturer_c'];
-         $body_type = $_POST['body_t'];
-         $vehicle_model = $_POST['vehicle_model'];
-         $vehicle_weight = $_POST['vehicle_weight'];
-     
-         // Assuming fixed values for calculations (you may adjust these based on your requirements)
-         $depreciation_rate = 0.30;
-     
-         // Perform your import duty calculation logic here
-         // ...
-     
-         // Example output (replace this with your actual calculation results)
-         $import_duty_result = array(
-             'CRSP' => 'Kes 3,761,368.00',
-             'Customs_Value_CIF' => 'Kes 2,106,366.08',
-             'Depreciation_Value' => '30% Depreciation',
-             'Import_Duty' => 'Kes 0.00',
-             'Excise_Value' => 'Kes 0.00',
-             'VAT_Value' => 'Kes 0.00',
-             'Total_Taxes' => 'Kes 0.00',
-             'Import_Licence_IDF_Fee' => 'Kes 0.00',
-             'Railways_Development_Levy' => 'Kes 0.00',
-             'Total_Taxes_and_Levies' => 'Kes 0.00'
-         );
-     
-         // Output the calculation results
-         echo '<pre>';
-         print_r($import_duty_result);
-         echo '</pre>';
-     } elseif (isset($_POST['form4'])) {
+     } elseif  (isset($_POST['form3'])) {
+        // Retrieve form input values
+        $vehiclePrice = floatval(str_replace(',', '', $_POST['vehicle_price']));
+        $manufacturingMonth = $_POST['manufacturing_month'];
+        $manufacturingYear = $_POST['manufacturing_year'];
+        $manufacturer = $_POST['manufacturer'];
+        $bodyType = $_POST['body_type'];
+        $vehicleModel = $_POST['vehicle_model'];
+        $vehicleWeight = $_POST['vehicle_weight'];
+    
+        // Perform import duty calculation logic
+        // KRA provides the current Retail Selling Price (CRSP) for the vehicle
+        $crsp = $vehiclePrice;
+    
+        // Apply depreciation to get Customs Value
+        $customsValue = $crsp * 0.85;
+    
+        // Calculate Import Duty (35% of Customs Value)
+        $importDuty = $customsValue * 0.35;
+    
+        // Calculate Excise Duty (20% of Customs Value + Import Duty)
+        $exciseDuty = ($customsValue + $importDuty) * 0.20;
+    
+        // Calculate VAT (16% of Customs Value + Import Duty + Excise Duty)
+        $vat = ($customsValue + $importDuty + $exciseDuty) * 0.16;
+    
+        // Calculate IDF Fee (3.5% of Customs Value)
+        $idfFee = $customsValue * 0.035;
+    
+        // Calculate RDL Fee (2% of Customs Value)
+        $rdlFee = $customsValue * 0.02;
+    
+        // Display results in a table
+        echo "<table>";
+        echo "<tr><th>Description</th><th>Amount</th></tr>";
+        echo "<tr><td>CRSP Value</td><td>Kes $vehiclePrice</td></tr>";
+        echo "<tr><td>Customs Value</td><td>Kes " . number_format($customsValue, 2) . "</td></tr>";
+        echo "<tr><td>Import Duty</td><td>Kes " . number_format($importDuty, 2) . "</td></tr>";
+        echo "<tr><td>Excise Duty</td><td>Kes " . number_format($exciseDuty, 2) . "</td></tr>";
+        echo "<tr><td>VAT</td><td>Kes " . number_format($vat, 2) . "</td></tr>";
+        echo "<tr><td>IDF Fee</td><td>Kes " . number_format($idfFee, 2) . "</td></tr>";
+        echo "<tr><td>RDL Fee</td><td>Kes " . number_format($rdlFee, 2) . "</td></tr>";
+        echo "</tr>";
+         echo "<td>How Is Car Duty Calculated In Kenya?</td>";
+         echo "<td>The Current Retail Selling Price (CRSP) of your vehicle is provided by the KRA.
+          The KRA compares the CRSP value and the actual invoice value of the car and uses the higher of the 
+          two. Customs value is then calculated by applying the depreciation to the CRSP value. The excise duty,
+           import duty, VAT and the IDF Fee are all calculated from the customs value.
+
+
+         This calculation is as follows:
+         '<br>''<br>'
+         KRA provide the current Retail Selling Price (CRSP) for your vehicle.
+         '<br>''<br>'
+         Customs Value is the CRSP value with depreciation applied.
+         '<br>''<br>'
+         Import Duty is 35% of the Customs Value.
+         '<br>''<br>'
+         Excise Duty is 20% of the Customs Value + Import Duty.
+         '<br>''<br>'
+         VAT is 16% of the Customs Value + Import Duty + Excise Duty.
+         '<br>''<br>'
+         IDF Fee 3.5% of the Customs Value.
+         '<br>''<br>'
+         RDL Fee is 2% of the Customs Value.</td>";
+         echo "</tr>";
+        echo "</table>";
+    } elseif (isset($_POST['form4'])) {
          // Import duty calculation for Motor Cycle
-     
-         $manufacturing_month = $_POST['manafacturer_m'];
-         $manufacturing_year = $_POST['manafacturer_y'];
-         $manufacturer_c = $_POST['manafacturer_c'];
-         $body_t = $_POST['body_t'];
-         $motor_model = $_POST['motor_model'];
-         $motor_weight = $_POST['motor_weight'];
-     
-         // Assuming fixed values for calculations (you may adjust these based on your requirements)
-         $depreciation_rate = 0.30;
-     
-         // Perform your import duty calculation logic here
-         // ...
-     
-         // Example output (replace this with your actual calculation results)
-         $import_duty_result = array(
-             'CRSP' => 'Kes 3,761,368.00',
-             'Customs_Value_CIF' => 'Kes 2,106,366.08',
-             'Depreciation_Value' => '30% Depreciation',
-             'Import_Duty' => 'Kes 0.00',
-             'Excise_Value' => 'Kes 0.00',
-             'VAT_Value' => 'Kes 0.00',
-             'Total_Taxes' => 'Kes 0.00',
-             'Import_Licence_IDF_Fee' => 'Kes 0.00',
-             'Railways_Development_Levy' => 'Kes 0.00',
-             'Total_Taxes_and_Levies' => 'Kes 0.00'
-         );
-     
-         // Output the calculation results
-         echo '<pre>';
-         print_r($import_duty_result);
-         echo '</pre>';
+        // Retrieve form input values
+        $motorCyclePrice = floatval(str_replace(',', '', $_POST['motor_cycle_price']));
+        $manufacturingM = $_POST['manufacturing_month'];
+        $manufacturingY = $_POST['manufacturing_year'];
+        $manufacturer = $_POST['manufacturer'];
+        $bodyT = $_POST['body_type'];
+        $vehicleM = $_POST['vehicle_model'];
+        $v = $_POST['vehicle_weight'];
+    
+        // Perform import duty calculation logic
+        // KRA provides the current Retail Selling Price (CRSP) for the vehicle
+        $crsp = $vehiclePrice;
+    
+        // Apply depreciation to get Customs Value
+        $customsValue = $crsp * 0.85;
+    
+        // Calculate Import Duty (35% of Customs Value)
+        $importDuty = $customsValue * 0.35;
+    
+        // Calculate Excise Duty (20% of Customs Value + Import Duty)
+        $exciseDuty = ($customsValue + $importDuty) * 0.20;
+    
+        // Calculate VAT (16% of Customs Value + Import Duty + Excise Duty)
+        $vat = ($customsValue + $importDuty + $exciseDuty) * 0.16;
+    
+        // Calculate IDF Fee (3.5% of Customs Value)
+        $idfFee = $customsValue * 0.035;
+    
+        // Calculate RDL Fee (2% of Customs Value)
+        $rdlFee = $customsValue * 0.02;
+    
+        // Display results in a table
+        echo "<table>";
+        echo "<tr><th>Description</th><th>Amount</th></tr>";
+        echo "<tr><td>CRSP Value</td><td>Kes $vehiclePrice</td></tr>";
+        echo "<tr><td>Customs Value</td><td>Kes " . number_format($customsValue, 2) . "</td></tr>";
+        echo "<tr><td>Import Duty</td><td>Kes " . number_format($importDuty, 2) . "</td></tr>";
+        echo "<tr><td>Excise Duty</td><td>Kes " . number_format($exciseDuty, 2) . "</td></tr>";
+        echo "<tr><td>VAT</td><td>Kes " . number_format($vat, 2) . "</td></tr>";
+        echo "<tr><td>IDF Fee</td><td>Kes " . number_format($idfFee, 2) . "</td></tr>";
+        echo "<tr><td>RDL Fee</td><td>Kes " . number_format($rdlFee, 2) . "</td></tr>";
+        echo "</tr>";
+         echo "<td>How Is Car Duty Calculated In Kenya?</td>";
+         echo "<td>The Current Retail Selling Price (CRSP) of your vehicle is provided by the KRA.
+          The KRA compares the CRSP value and the actual invoice value of the car and uses the higher of the 
+          two. Customs value is then calculated by applying the depreciation to the CRSP value. The excise duty,
+           import duty, VAT and the IDF Fee are all calculated from the customs value.
+
+
+         This calculation is as follows:
+         '<br>''<br>'
+         KRA provide the current Retail Selling Price (CRSP) for your vehicle.
+         '<br>''<br>'
+         Customs Value is the CRSP value with depreciation applied.
+         '<br>''<br>'
+         Import Duty is 35% of the Customs Value.
+         '<br>''<br>'
+         Excise Duty is 20% of the Customs Value + Import Duty.
+         '<br>''<br>'
+         VAT is 16% of the Customs Value + Import Duty + Excise Duty.
+         '<br>''<br>'
+         IDF Fee 3.5% of the Customs Value.
+         '<br>''<br>'
+         RDL Fee is 2% of the Customs Value.</td>";
+         echo "</tr>";
+        echo "</table>";
      } else {
          // Display a default message or any other content when no form is submitted
          echo "Select a Taxation calculation to perform.";

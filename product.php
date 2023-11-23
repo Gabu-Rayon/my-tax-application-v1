@@ -146,7 +146,7 @@ if (isset($_POST['form_add_to_cart'])) {
     }
     if ($_POST['p_qty'] > $current_p_qty) :
         $temp_msg = 'Sorry! There are only ' . $current_p_qty . ' item(s) in stock';
-?>
+        ?>
 <script type="text/javascript">
 alert('<?php echo $temp_msg; ?>');
 </script>
@@ -310,7 +310,8 @@ if ($success_message1 != '') {
             <div class="col-md-12">
                 <div class="breadcrumb mb_30">
                     <ul>
-                        <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>">Home</a>
+                        </li>
                         <li>></li>
                         <li><a
                                 href="<?php echo BASE_URL . 'product-category.php?id=' . $tcat_id . '&type=top-category' ?>"><?php echo $tcat_name; ?></a>
@@ -338,18 +339,18 @@ if ($success_message1 != '') {
                                 </li>
                                 <?php
                                 $statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
-                                $statement->execute(array($_REQUEST['id']));
-                                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($result as $row) {
-                                ?>
+$statement->execute(array($_REQUEST['id']));
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                 <li
                                     style="background-image: url(assets/uploads/product_photos/<?php echo $row['photo']; ?>);">
                                     <a class="popup"
                                         href="assets/uploads/product_photos/<?php echo $row['photo']; ?>"></a>
                                 </li>
                                 <?php
-                                }
-                                ?>
+}
+?>
                             </ul>
                             <div id="prod-pager">
                                 <a data-slide-index="0" href="">
@@ -358,21 +359,21 @@ if ($success_message1 != '') {
                                     </div>
                                 </a>
                                 <?php
-                                $i = 1;
-                                $statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
-                                $statement->execute(array($_REQUEST['id']));
-                                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($result as $row) {
-                                ?>
+$i = 1;
+$statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
+$statement->execute(array($_REQUEST['id']));
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                                 <a data-slide-index="<?php echo $i; ?>" href="">
                                     <div class="prod-pager-thumb"
                                         style="background-image: url(assets/uploads/product_photos/<?php echo $row['photo']; ?>">
                                     </div>
                                 </a>
                                 <?php
-                                    $i++;
-                                }
-                                ?>
+        $i++;
+}
+?>
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -382,52 +383,52 @@ if ($success_message1 != '') {
                             <div class="p-review">
                                 <div class="rating">
                                     <?php
-                                    if ($avg_rating == 0) {
-                                        echo '';
-                                    } elseif ($avg_rating == 1.5) {
-                                        echo '
+    if ($avg_rating == 0) {
+        echo '';
+    } elseif ($avg_rating == 1.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 2.5) {
-                                        echo '
+    } elseif ($avg_rating == 2.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 3.5) {
-                                        echo '
+    } elseif ($avg_rating == 3.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 4.5) {
-                                        echo '
+    } elseif ($avg_rating == 4.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                         ';
-                                    } else {
-                                        for ($i = 1; $i <= 5; $i++) {
-                                    ?>
+    } else {
+        for ($i = 1; $i <= 5; $i++) {
+            ?>
                                     <?php if ($i > $avg_rating) : ?>
                                     <i class="fa fa-star-o"></i>
                                     <?php else : ?>
                                     <i class="fa fa-star"></i>
                                     <?php endif; ?>
                                     <?php
-                                        }
-                                    }
-                                    ?>
+        }
+    }
+?>
                                 </div>
                             </div>
                             <div class="p-short-des">
@@ -440,42 +441,46 @@ if ($success_message1 != '') {
                                     <div class="row">
                                         <?php if (isset($size)) : ?>
                                         <div class="col-md-12 mb_20">
-                                            <?php echo LANG_VALUE_52; ?> <br>
+                                            <?php echo LANG_VALUE_52; ?>
+                                            <br>
                                             <select name="size_id" class="form-control select2" style="width:auto;">
                                                 <?php
-                                                    $statement = $pdo->prepare("SELECT * FROM tbl_size");
-                                                    $statement->execute();
-                                                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                    foreach ($result as $row) {
-                                                        if (in_array($row['size_id'], $size)) {
+                $statement = $pdo->prepare("SELECT * FROM tbl_size");
+                                            $statement->execute();
+                                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                            foreach ($result as $row) {
+                                                if (in_array($row['size_id'], $size)) {
                                                     ?>
                                                 <option value="<?php echo $row['size_id']; ?>">
-                                                    <?php echo $row['size_name']; ?></option>
+                                                    <?php echo $row['size_name']; ?>
+                                                </option>
                                                 <?php
-                                                        }
-                                                    }
-                                                    ?>
+                                                }
+                                            }
+                                            ?>
                                             </select>
                                         </div>
                                         <?php endif; ?>
 
                                         <?php if (isset($color)) : ?>
                                         <div class="col-md-12">
-                                            <?php echo LANG_VALUE_53; ?> <br>
+                                            <?php echo LANG_VALUE_53; ?>
+                                            <br>
                                             <select name="color_id" class="form-control select2" style="width:auto;">
                                                 <?php
-                                                    $statement = $pdo->prepare("SELECT * FROM tbl_color");
-                                                    $statement->execute();
-                                                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                                    foreach ($result as $row) {
-                                                        if (in_array($row['color_id'], $color)) {
+                                            $statement = $pdo->prepare("SELECT * FROM tbl_color");
+                                            $statement->execute();
+                                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                            foreach ($result as $row) {
+                                                if (in_array($row['color_id'], $color)) {
                                                     ?>
                                                 <option value="<?php echo $row['color_id']; ?>">
-                                                    <?php echo $row['color_name']; ?></option>
+                                                    <?php echo $row['color_name']; ?>
+                                                </option>
                                                 <?php
-                                                        }
-                                                    }
-                                                    ?>
+                                                }
+                                            }
+                                            ?>
                                             </select>
                                         </div>
                                         <?php endif; ?>
@@ -488,56 +493,113 @@ if ($success_message1 != '') {
                                 </div>
                                 <?php
                                         $depreciationRate = 5; // 40%
-
-                                       if ($tax_imposed_variat == 'imported') {  
+                                        
+                                        if ($tax_imposed_variat == 'imported') {
                                     ?>
-                                <p><?php echo $tax_imposed_variat; ?></p>
+                                <p>
+                                    <?php echo $tax_imposed_variat; ?>
+                                </p>
                                 <p>
                                     <?php
-                                             $InsurancePercent = 0.02;
-                                             $costOfGoods = $p_current_price;
-                                             $freightCharges = 3;
-                                             // Calculate CIF
-                                             $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
-                                             echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
-                                         ?>
-                                </p>
-                                <p><?php echo "Depriciation Value  " . number_format($depreciationRate, 2); ?> %</p>
-                                <p>
-                                    <?php 
-                                           //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
-                                           $exciseTaxRate =0.1;
-                                           $VolumeofGoodORQuantity = $p_qty;
-                                           $exciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
-                                           echo "Excise Value: Ksh    " . number_format($exciseValue, 2);
-                                         
-                                         ?>
+                                                 $InsurancePercent = 0.02;
+                                                 $costOfGoods = $p_current_price;
+                                                 $freightCharges = 3;
+                                                     // Calculate CIF
+                                                 $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
+                                                 echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
+                                    ?>
                                 </p>
                                 <p>
                                     <?php 
-                                          $VATRate = 0.16 ;//16%
-                                           //VAT Value=VAT Rate×Customs Value/CIF
-                                           //VAT Value=(Customs Value/CIF+Import Duty+Other Applicable Duties)×VAT Rate
-                                           $VATValue =  $VATRate  *  $CIF;
-
-                                           echo "VAT Value: Ksh    " . number_format($VATValue, 2);
+                                    echo "Depriciation Value  " . number_format($depreciationRate, 2);
                                      ?>
+                                    %
+                                </p>
+                                <p>
+                                    <?php
+                                          //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
+                                          
+                                          $exciseTaxRate =0.1;
+                                          $VolumeofGoodORQuantity = $p_qty;
+                                          $exciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
+                                          echo "Excise Value: Ksh    " . number_format($exciseValue, 2);                                       
+                                    ?>
+                                </p>
+                                <p>
+                                    <?php
+                                    
+                                    $VATRate = 0.16 ;//16%
+                                    //VAT Value=VAT Rate×Customs Value/CIF
+                                    //VAT Value=(Customs Value/CIF+Import Duty+Other Applicable Duties)×VAT Rate
+                                    $VATValue =  $VATRate  *  $CIF;
+                                    echo "VAT Value: Ksh    " . number_format($VATValue, 2);
+                                ?>
                                 </p>
                                 <P>
                                     <?php
-                                        //Railways Development Levy=Customs Value/CIF×Railways Development Levy Rate
-                                         $railwaysDevelopmentLevyRate = 0.12; //12%
-                                         $railwaysDevelopmentLevy = $CIF * $railwaysDevelopmentLevyRate;
-                                         echo "Railways Development Levy: Ksh    " . number_format($railwaysDevelopmentLevy, 2);
-                                        ?>
+                                   //Railways Development Levy=Customs Value/CIF×Railways Development Levy Rate
+                                   $railwaysDevelopmentLevyRate = 0.12; //12%
+                                   $railwaysDevelopmentLevy = $CIF * $railwaysDevelopmentLevyRate;
+                                   echo "Railways Development Levy: Ksh    " . number_format($railwaysDevelopmentLevy, 2);
+                                ?>
                                 </P>
                                 <?php
-                                        } else {
-                                        // Product is locally made, no import duty
-                                        echo "Product is locally made. No import duty.";
+                                } elseif($tax_imposed_variat == 'locally') {
+                                ?>
+                                <p>
+                                    <?php echo $tax_imposed_variat; ?>
+                                </p>
+                                <p>
+                                    <?php
+                                     $InsurancePercent = 0.00025;
+                                     $costOfGoods = $p_current_price;
+                                     $freightCharges = 2.5;
+                                     // Calculate CIF
+                                     $CIF = $costOfGoods + ($costOfGoods * $InsurancePercent) + $freightCharges;
+                                    echo "Customs Value/CIF: Ksh    " . number_format($CIF, 2);
+                                ?>
+                                </p>
+                                <p>
+                                    <?php
+                                     echo "Depriciation Value  " . number_format($depreciationRate, 2);
+                                      ?>
+                                    %
+                                </p>
+                                <p>
+                                    <?php
+                                     //Excise Value=  Quantity or Volume of Goods  ×   Excise Tax Rate
+                                    $exciseTaxRate =0.00015;
+                                    $VolumeofGoodORQuantity = $p_qty;
+                                    $exciseValue = $VolumeofGoodORQuantity * $exciseTaxRate;
+                                    echo "Excise Value: Ksh    " . number_format($exciseValue, 2);                                                                                      
+                                  ?>
+                                </p>
+                                <p>
+                                    <?php
+                                      $VATRate = 0.16 ;//16%
+                                      //VAT Value=VAT Rate×Customs Value/CIF
+                                      //VAT Value=(Customs Value/CIF+Import Duty+Other Applicable Duties)×VAT Rate
+                                      $VATValue =  $VATRate  *  $CIF;         
+                                     echo "VAT Value: Ksh    " . number_format($VATValue, 2);
+                                   ?>
+                                </p>
+                                <P>
+                                    <?php
+                                    //Railways Development Levy=Customs Value/CIF×Railways Development Levy Rate
+                                    
+                                    $railwaysDevelopmentLevyRate = 0.12; //12%
+                                    $railwaysDevelopmentLevy = $CIF * $railwaysDevelopmentLevyRate;
+                                    echo "Railways Development Levy: Ksh    " . number_format($railwaysDevelopmentLevy, 2);
+                                    ?>
+                                </P>
 
-                                        }
-                                     ?>
+                                <?php                             
+                                } else {                                   
+                              // Product is locally made, no import duty
+                                echo "Product is locally made. No import duty." ;
+}
+                                
+?>
                                 <div class="p-price">
                                     <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                     <span>
@@ -575,14 +637,19 @@ if ($success_message1 != '') {
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#description"
                                         aria-controls="description" role="tab"
-                                        data-toggle="tab"><?php echo LANG_VALUE_59; ?></a></li>
+                                        data-toggle="tab"><?php echo LANG_VALUE_59; ?></a>
+                                </li>
                                 <li role="presentation"><a href="#feature" aria-controls="feature" role="tab"
-                                        data-toggle="tab"><?php echo LANG_VALUE_60; ?></a></li>
+                                        data-toggle="tab"><?php echo LANG_VALUE_60; ?></a>
+                                </li>
                                 <li role="presentation"><a href="#condition" aria-controls="condition" role="tab"
-                                        data-toggle="tab"><?php echo LANG_VALUE_61; ?></a></li>
+                                        data-toggle="tab"><?php echo LANG_VALUE_61; ?></a>
+                                </li>
                                 <li role="presentation"><a href="#return_policy" aria-controls="return_policy"
-                                        role="tab" data-toggle="tab"><?php echo LANG_VALUE_62; ?></a></li>
-                                <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo LANG_VALUE_63; ?></a></li> -->
+                                        role="tab" data-toggle="tab"><?php echo LANG_VALUE_62; ?></a>
+                                </li>
+                                <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo LANG_VALUE_63; ?></a>
+                                </li> -->
                             </ul>
 
                             <!-- Tab panes -->
@@ -591,117 +658,128 @@ if ($success_message1 != '') {
                                     style="margin-top: -30px;">
                                     <p>
                                         <?php
-                                        if ($p_description == '') {
-                                            echo LANG_VALUE_70;
-                                        } else {
-                                            echo $p_description;
-                                        }
-                                        ?>
+        if ($p_description == '') {
+            echo LANG_VALUE_70;
+        } else {
+            echo $p_description;
+        }
+?>
                                     </p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="feature" style="margin-top: -30px;">
                                     <p>
                                         <?php
-                                        if ($p_feature == '') {
-                                            echo LANG_VALUE_71;
-                                        } else {
-                                            echo $p_feature;
-                                        }
-                                        ?>
+if ($p_feature == '') {
+    echo LANG_VALUE_71;
+} else {
+    echo $p_feature;
+}
+?>
                                     </p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="condition" style="margin-top: -30px;">
                                     <p>
                                         <?php
-                                        if ($p_condition == '') {
-                                            echo LANG_VALUE_72;
-                                        } else {
-                                            echo $p_condition;
-                                        }
-                                        ?>
+if ($p_condition == '') {
+    echo LANG_VALUE_72;
+} else {
+    echo $p_condition;
+}
+?>
                                     </p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="return_policy" style="margin-top: -30px;">
                                     <p>
                                         <?php
-                                        if ($p_return_policy == '') {
-                                            echo LANG_VALUE_73;
-                                        } else {
-                                            echo $p_return_policy;
-                                        }
-                                        ?>
+if ($p_return_policy == '') {
+    echo LANG_VALUE_73;
+} else {
+    echo $p_return_policy;
+}
+?>
                                     </p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="review" style="margin-top: -30px;">
 
                                     <div class="review-form">
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * 
+$statement = $pdo->prepare("SELECT * 
                                                             FROM tbl_rating t1 
                                                             JOIN tbl_customer t2 
                                                             ON t1.cust_id = t2.cust_id 
                                                             WHERE t1.p_id=?");
-                                        $statement->execute(array($_REQUEST['id']));
-                                        $total = $statement->rowCount();
-                                        ?>
-                                        <h2><?php echo LANG_VALUE_63; ?> (<?php echo $total; ?>)</h2>
+$statement->execute(array($_REQUEST['id']));
+$total = $statement->rowCount();
+?>
+                                        <h2><?php echo LANG_VALUE_63; ?>
+                                            (<?php echo $total; ?>)
+                                        </h2>
                                         <?php
-                                        if ($total) {
-                                            $j = 0;
-                                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                            foreach ($result as $row) {
-                                                $j++;
-                                        ?>
-                                        <div class="mb_10"><b><u><?php echo LANG_VALUE_64; ?> <?php echo $j; ?></u></b>
+if ($total) {
+    $j = 0;
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $row) {
+        $j++;
+        ?>
+                                        <div class="mb_10">
+                                            <b><u><?php echo LANG_VALUE_64; ?>
+                                                    <?php echo $j; ?></u></b>
                                         </div>
                                         <table class="table table-bordered">
                                             <tr>
-                                                <th style="width:170px;"><?php echo LANG_VALUE_75; ?></th>
-                                                <td><?php echo $row['cust_name']; ?></td>
+                                                <th style="width:170px;">
+                                                    <?php echo LANG_VALUE_75; ?>
+                                                </th>
+                                                <td><?php echo $row['cust_name']; ?>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <th><?php echo LANG_VALUE_76; ?></th>
-                                                <td><?php echo $row['comment']; ?></td>
+                                                <th><?php echo LANG_VALUE_76; ?>
+                                                </th>
+                                                <td><?php echo $row['comment']; ?>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <th><?php echo LANG_VALUE_78; ?></th>
+                                                <th><?php echo LANG_VALUE_78; ?>
+                                                </th>
                                                 <td>
                                                     <div class="rating">
                                                         <?php
-                                                                for ($i = 1; $i <= 5; $i++) {
-                                                                ?>
+                                for ($i = 1; $i <= 5; $i++) {
+                                    ?>
                                                         <?php if ($i > $row['rating']) : ?>
                                                         <i class="fa fa-star-o"></i>
                                                         <?php else : ?>
                                                         <i class="fa fa-star"></i>
                                                         <?php endif; ?>
                                                         <?php
-                                                                }
-                                                                ?>
+                                }
+        ?>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </table>
                                         <?php
-                                            }
-                                        } else {
-                                            echo LANG_VALUE_74;
-                                        }
-                                        ?>
+    }
+} else {
+    echo LANG_VALUE_74;
+}
+?>
 
-                                        <h2><?php echo LANG_VALUE_65; ?></h2>
+                                        <h2><?php echo LANG_VALUE_65; ?>
+                                        </h2>
                                         <?php
-                                        if ($error_message != '') {
-                                            echo "<script>alert('" . $error_message . "')</script>";
-                                        }
-                                        if ($success_message != '') {
-                                            echo "<script>alert('" . $success_message . "')</script>";
-                                        }
-                                        ?>
+if ($error_message != '') {
+    echo "<script>alert('" . $error_message . "')</script>";
+}
+if ($success_message != '') {
+    echo "<script>alert('" . $success_message . "')</script>";
+}
+?>
                                         <?php if (isset($_SESSION['customer'])) : ?>
 
                                         <?php
-                                            $statement = $pdo->prepare("SELECT * 
+    $statement = $pdo->prepare("SELECT * 
                                                                 FROM tbl_rating
                                                                 WHERE p_id=? AND cust_id=?");
                                             $statement->execute(array($_REQUEST['id'], $_SESSION['customer']['cust_id']));
@@ -731,7 +809,8 @@ if ($success_message1 != '') {
 
                                         <?php else : ?>
                                         <p class="error">
-                                            <?php echo LANG_VALUE_69; ?> <br>
+                                            <?php echo LANG_VALUE_69; ?>
+                                            <br>
                                             <a href="login.php"
                                                 style="color:red;text-decoration: underline;"><?php echo LANG_VALUE_9; ?></a>
                                         </p>
@@ -767,10 +846,10 @@ if ($success_message1 != '') {
 
                     <?php
                     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE ecat_id=? AND p_id!=?");
-                    $statement->execute(array($ecat_id, $_REQUEST['id']));
-                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as $row) {
-                    ?>
+$statement->execute(array($ecat_id, $_REQUEST['id']));
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+    ?>
                     <div class="item">
                         <div class="thumb">
                             <div class="photo"
@@ -799,75 +878,75 @@ if ($success_message1 != '') {
                             </h4>
                             <div class="rating">
                                 <?php
-                                    $t_rating = 0;
-                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
-                                    $statement1->execute(array($row['p_id']));
-                                    $tot_rating = $statement1->rowCount();
-                                    if ($tot_rating == 0) {
-                                        $avg_rating = 0;
-                                    } else {
-                                        $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($result1 as $row1) {
-                                            $t_rating = $t_rating + $row1['rating'];
-                                        }
-                                        $avg_rating = $t_rating / $tot_rating;
-                                    }
-                                    ?>
+                    $t_rating = 0;
+    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+    $statement1->execute(array($row['p_id']));
+    $tot_rating = $statement1->rowCount();
+    if ($tot_rating == 0) {
+        $avg_rating = 0;
+    } else {
+        $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result1 as $row1) {
+            $t_rating = $t_rating + $row1['rating'];
+        }
+        $avg_rating = $t_rating / $tot_rating;
+    }
+    ?>
                                 <?php
-                                    if ($avg_rating == 0) {
-                                        echo '';
-                                    } elseif ($avg_rating == 1.5) {
-                                        echo '
+    if ($avg_rating == 0) {
+        echo '';
+    } elseif ($avg_rating == 1.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 2.5) {
-                                        echo '
+    } elseif ($avg_rating == 2.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 3.5) {
-                                        echo '
+    } elseif ($avg_rating == 3.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } elseif ($avg_rating == 4.5) {
-                                        echo '
+    } elseif ($avg_rating == 4.5) {
+        echo '
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
                                         ';
-                                    } else {
-                                        for ($i = 1; $i <= 5; $i++) {
-                                    ?>
+    } else {
+        for ($i = 1; $i <= 5; $i++) {
+            ?>
                                 <?php if ($i > $avg_rating) : ?>
                                 <i class="fa fa-star-o"></i>
                                 <?php else : ?>
                                 <i class="fa fa-star"></i>
                                 <?php endif; ?>
                                 <?php
-                                        }
-                                    }
-                                    ?>
+        }
+    }
+    ?>
                             </div>
                             <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-tags"></i></i> View
                                     Product Details</a></p>
                         </div>
                     </div>
                     <?php
-                    }
-                    ?>
+}
+?>
 
                 </div>
 

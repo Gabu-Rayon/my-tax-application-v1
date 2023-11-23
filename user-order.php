@@ -160,7 +160,7 @@ if(!isset($_SESSION['customer'])) {
                                                 echo '<br>Size: '.$row1['size'];
                                                 echo '<br>Color: '.$row1['color'];
                                                 echo '<br>Quantity: '.$row1['quantity'];
-                                                echo '<br>Unit Price: $'.$row1['unit_price'];
+                                                echo '<br>Unit Price: Kes '.$row1['unit_price'];
                                                 echo '<br><br>';
                                             }
                                             ?>

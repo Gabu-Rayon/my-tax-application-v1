@@ -267,7 +267,7 @@ if(isset($_POST['form1'])) {
                         <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Select Tax Imposed Variat *</label>
                             <div class="col-sm-4">
-                                <select name="size[]" class="form-control select2" multiple="multiple">
+                                <select name="p_tax_imposed_variat" class="form-control select2" multiple="multiple">
                                     <?php
 									$statement = $pdo->prepare("SELECT * FROM tbl_taxation_type ORDER BY tax_id ASC");
 									$statement->execute();
@@ -383,16 +383,6 @@ if(isset($_POST['form1'])) {
                             <div class="col-sm-8">
                                 <textarea name="p_return_policy" class="form-control" cols="30" rows="10"
                                     id="editor5"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Tax Imposed Variat</label>
-                            <div class="col-sm-8">
-                                <select name="p_tax_imposed_variat" class="form-control" style="width:auto;">
-                                    <option value="0">Imported</option>
-                                    <option value="1">Locally Manufactured</option>
-                                </select>
                             </div>
                         </div>
                         <div class="form-group">

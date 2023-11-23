@@ -43,7 +43,7 @@ if(!isset($_SESSION['customer'])) {
                             <tbody>
 
 
-            <?php
+                                <?php
             /* ===================== Pagination Code Starts ================== */
             $adjacents = 5;
 
@@ -148,10 +148,10 @@ if(!isset($_SESSION['customer'])) {
                                 foreach ($result as $row) {
                                     $tip++;
                                     ?>
-                                    <tr>
-                                        <td><?php echo $tip; ?></td>
-                                        <td>
-                                            <?php
+                                <tr>
+                                    <td><?php echo $tip; ?></td>
+                                    <td>
+                                        <?php
                                             $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
                                             $statement1->execute(array($row['payment_id']));
                                             $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
@@ -164,29 +164,29 @@ if(!isset($_SESSION['customer'])) {
                                                 echo '<br><br>';
                                             }
                                             ?>
-                                        </td>
-                                        <td><?php echo $row['payment_date']; ?></td>
-                                        <td><?php echo $row['txnid']; ?></td>
-                                        <td><?php echo '$'.$row['paid_amount']; ?></td>
-                                        <td><?php echo $row['payment_status']; ?></td>
-                                        <td><?php echo $row['payment_method']; ?></td>
-                                        <td><?php echo $row['payment_id']; ?></td>
-                                    </tr>
-                                    <?php
+                                    </td>
+                                    <td><?php echo $row['payment_date']; ?></td>
+                                    <td><?php echo $row['txnid']; ?></td>
+                                    <td><?php echo 'Kes  '.$row['paid_amount']; ?></td>
+                                    <td><?php echo $row['payment_status']; ?></td>
+                                    <td><?php echo $row['payment_method']; ?></td>
+                                    <td><?php echo $row['payment_id']; ?></td>
+                                </tr>
+                                <?php
                                 } 
-                                ?>                               
-                                
+                                ?>
+
                             </tbody>
                         </table>
                         <div class="pagination" style="overflow: hidden;">
-                        <?php 
+                            <?php 
                             echo $pagination; 
                         ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<?php require_once('footer.php'); ?>
+    <?php require_once('footer.php'); ?>

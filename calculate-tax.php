@@ -418,7 +418,7 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Month of Manufacture *: </label>
-                                                <select name="manafacturer_m" class="select2 ">
+                                                <select name="manufacturing_m" class="select2 ">
                                                     <option value="">Select Manafuacturing Month</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_months ORDER BY month ASC");
@@ -437,7 +437,7 @@ th {
 
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Year of Manufacture *: </label>
-                                                <select name="manafacturer_y" class="select2 ">
+                                                <select name="manufacturing_y" class="select2 ">
                                                     <option value="">Select Motor Cycle Manufacturing Year</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_years ORDER BY year ASC");
@@ -455,7 +455,7 @@ th {
                                             </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Make *: </label>
-                                                <select name="manafacturer_c" class=" select2 ">
+                                                <select name="manufacturer_c" class=" select2 ">
                                                     <option value="">Select Motor Cycle Maker</option>
                                                     <?php
                                                          $statement = $pdo->prepare("SELECT * FROM tbl_motors_cycle_makers ORDER BY motor_cycle_makers ASC");
@@ -506,7 +506,7 @@ th {
                                             <div class="form-group">
                                                 <label for=""></label>
                                                 <input type="submit" class="btn btn-success" value="Calculate"
-                                                    name="form3">
+                                                    name="form4">
                                             </div>
                                         </div>
                                     </div>

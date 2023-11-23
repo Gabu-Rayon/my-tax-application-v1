@@ -27,11 +27,11 @@ if(!isset($_SESSION['cart_p_id'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                
+
                 <?php if(!isset($_SESSION['customer'])): ?>
-                    <p>
-                        <a href="login.php" class="btn btn-md btn-danger"><?php echo LANG_VALUE_160; ?></a>
-                    </p>
+                <p>
+                    <a href="login.php" class="btn btn-md btn-danger"><?php echo LANG_VALUE_160; ?></a>
+                </p>
                 <?php else: ?>
 
                 <h3 class="special"><?php echo LANG_VALUE_26; ?></h3>
@@ -47,7 +47,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
                         </tr>
-                         <?php
+                        <?php
                         $table_total_price = 0;
 
                         $i=0;
@@ -129,17 +129,17 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?>  <?php echo $row_total_price; ?>
+                                <?php echo LANG_VALUE_1; ?> <?php echo $row_total_price; ?>
                             </td>
                         </tr>
-                        <?php endfor; ?>           
+                        <?php endfor; ?>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?>   <?php echo $table_total_price; ?></th>
+                            <th class="total-amount"><?php echo LANG_VALUE_1; ?> <?php echo $table_total_price; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
-                        $statement->execute(array($_SESSION['customer']['cust_country']));
+                        $statement->execute(array($_SESSION['customer']['cust_county']));
                         $total = $statement->rowCount();
                         if($total) {
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -169,13 +169,13 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?>   <?php echo $final_total; ?>
+                                <?php echo LANG_VALUE_1; ?> <?php echo $final_total; ?>
                             </th>
                         </tr>
-                    </table> 
+                    </table>
                 </div>
 
-                
+
 
                 <div class="billing-address">
                     <div class="row">
@@ -184,7 +184,8 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
                                     <td><?php echo LANG_VALUE_102; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p></td>
+                                    <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_103; ?></td>
@@ -198,11 +199,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <td><?php echo LANG_VALUE_106; ?></td>
                                     <td>
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
-                                        $statement->execute(array($_SESSION['customer']['cust_b_country']));
+                                        $statement = $pdo->prepare("SELECT * FROM tbl_counties WHERE county_id=?");
+                                        $statement->execute(array($_SESSION['customer']['cust_b_county']));
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                         foreach ($result as $row) {
-                                            echo $row['country_name'];
+                                            echo $row['county_name'];
                                         }
                                         ?>
                                     </td>
@@ -215,7 +216,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_107; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_city']; ?></td>
+                                    <td><?php echo $_SESSION['customer']['cust_b_town']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_108; ?></td>
@@ -224,7 +225,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <tr>
                                     <td><?php echo LANG_VALUE_109; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_zip']; ?></td>
-                                </tr>                                
+                                </tr>
                             </table>
                         </div>
                         <div class="col-md-6">
@@ -232,7 +233,8 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
                                     <td><?php echo LANG_VALUE_102; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p></td>
+                                    <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_103; ?></td>
@@ -246,11 +248,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <td><?php echo LANG_VALUE_106; ?></td>
                                     <td>
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
-                                        $statement->execute(array($_SESSION['customer']['cust_s_country']));
+                                        $statement = $pdo->prepare("SELECT * FROM tbl_counties WHERE county_id=?");
+                                        $statement->execute(array($_SESSION['customer']['cust_s_county']));
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                         foreach ($result as $row) {
-                                            echo $row['country_name'];
+                                            echo $row['county_name'];
                                         }
                                         ?>
                                     </td>
@@ -263,7 +265,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_107; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_s_city']; ?></td>
+                                    <td><?php echo $_SESSION['customer']['cust_s_town']; ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo LANG_VALUE_108; ?></td>
@@ -272,13 +274,13 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <tr>
                                     <td><?php echo LANG_VALUE_109; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_zip']; ?></td>
-                                </tr> 
+                                </tr>
                             </table>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
 
-                
+
 
                 <div class="cart-buttons">
                     <ul>
@@ -286,11 +288,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                     </ul>
                 </div>
 
-				<div class="clear"></div>
+                <div class="clear"></div>
                 <h3 class="special"><?php echo LANG_VALUE_33; ?></h3>
                 <div class="row">
-                    
-                    	<?php
+
+                    <?php
 		                $checkout_access = 1;
 		                if(
 		                    ($_SESSION['customer']['cust_b_name']=='') ||
@@ -313,46 +315,51 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                    $checkout_access = 0;
 		                }
 		                ?>
-		                <?php if($checkout_access == 0): ?>
-		                	<div class="col-md-12">
-				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the billing and shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
-			                    </div>
-	                    	</div>
-	                	<?php else: ?>
-		                	<div class="col-md-4">
-		                		
-	                            <div class="row">
+                    <?php if($checkout_access == 0): ?>
+                    <div class="col-md-12">
+                        <div style="color:red;font-size:22px;margin-bottom:50px;">
+                            You must have to fill up all the billing and shipping information from your dashboard panel
+                            in order to checkout the order. Please fill up the information going to <a
+                                href="customer-billing-shipping-update.php"
+                                style="color:red;text-decoration:underline;">this link</a>.
+                        </div>
+                    </div>
+                    <?php else: ?>
+                    <div class="col-md-4">
 
-	                                <div class="col-md-12 form-group">
-	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
-	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
-	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-	                                        <option value="PayPal"><?php echo LANG_VALUE_36; ?></option>
-	                                        <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
-	                                    </select>
-	                                </div>
+                        <div class="row">
 
-                                    <form class="paypal" action="<?php echo BASE_URL; ?>payment/paypal/payment_process.php" method="post" id="paypal_form" target="_blank">
-                                        <input type="hidden" name="cmd" value="_xclick" />
-                                        <input type="hidden" name="no_note" value="1" />
-                                        <input type="hidden" name="lc" value="UK" />
-                                        <input type="hidden" name="currency_code" value="USD" />
-                                        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+                            <div class="col-md-12 form-group">
+                                <label for=""><?php echo LANG_VALUE_34; ?> *</label>
+                                <select name="payment_method" class="form-control select2" id="advFieldsStatus">
+                                    <option value=""><?php echo LANG_VALUE_35; ?></option>
+                                    <option value="PayPal"><?php echo LANG_VALUE_36; ?></option>
+                                    <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
+                                </select>
+                            </div>
 
-                                        <input type="hidden" name="final_total" value="<?php echo $final_total; ?>">
-                                        <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form1">
-                                        </div>
-                                    </form>
+                            <form class="paypal" action="<?php echo BASE_URL; ?>payment/paypal/payment_process.php"
+                                method="post" id="paypal_form" target="_blank">
+                                <input type="hidden" name="cmd" value="_xclick" />
+                                <input type="hidden" name="no_note" value="1" />
+                                <input type="hidden" name="lc" value="UK" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+
+                                <input type="hidden" name="final_total" value="<?php echo $final_total; ?>">
+                                <div class="col-md-12 form-group">
+                                    <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>"
+                                        name="form1">
+                                </div>
+                            </form>
 
 
 
-                                    <form action="payment/bank/init.php" method="post" id="bank_form">
-                                        <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
-                                        <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_43; ?></span></label><br>
-                                            <?php
+                            <form action="payment/bank/init.php" method="post" id="bank_form">
+                                <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
+                                <div class="col-md-12 form-group">
+                                    <label for=""><?php echo LANG_VALUE_43; ?></span></label><br>
+                                    <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
                                             $statement->execute();
                                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -360,24 +367,27 @@ if(!isset($_SESSION['cart_p_id'])) {
                                                 echo nl2br($row['bank_detail']);
                                             }
                                             ?>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
-                                            <textarea name="transaction_info" class="form-control" cols="30" rows="10"></textarea>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form3">
-                                        </div>
-                                    </form>
-	                                
-	                            </div>
-		                            
-		                        
-		                    </div>
-		                <?php endif; ?>
-                        
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label for=""><?php echo LANG_VALUE_44; ?> <br><span
+                                            style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
+                                    <textarea name="transaction_info" class="form-control" cols="30"
+                                        rows="10"></textarea>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>"
+                                        name="form3">
+                                </div>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                    <?php endif; ?>
+
                 </div>
-                
+
 
                 <?php endif; ?>
 

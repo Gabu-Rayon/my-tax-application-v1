@@ -80,13 +80,3 @@ homeNo.addEventListener('click', () => {
     homeOwnershipDepositId.style.display = 'none';
     homeYes.checked = false; // Explicitly uncheck YES when NO is selected
 });
-
-
-//to pri the taxation calculation
-function printContent(el) {
-    var restorePage = document.body.innerHTML;
-    var printContent = document.getElementById(el).outerHTML;
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = restorePage;
-}

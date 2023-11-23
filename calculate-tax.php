@@ -874,6 +874,14 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
         </div>
     </div>
 </div>
-
-
+<script>
+//to pri the taxation calculation
+function printContent(el) {
+    var restorePage = document.body.innerHTML;
+    var printContent = document.getElementById(el).outerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = restorePage;
+}
+</script>
 <?php require_once('footer.php'); ?>

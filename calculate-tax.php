@@ -275,7 +275,7 @@ th {
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label for=""> Motor Cycle Model*: </label>
+                                                <label for=""> Vehicle Retail Price*: </label>
                                                 <input class="form-control" type="text" name="vehicle_price"
                                                     placeholder="e.g. Kes 1 200 000">
                                             </div>
@@ -411,7 +411,11 @@ th {
                                             Motor Cycle Import Duty
                                         </div>
                                         <div class="col-md-8">
-
+                                            <div class="form-group">
+                                                <label for=""> Motor Cycle Retail Price*: </label>
+                                                <input class="form-control" type="text" name="motor_cycle_price"
+                                                    placeholder="e.g. Kes 1 200 000">
+                                            </div>
                                             <div class="form-group">
                                                 <label for=""> Motor Cycle Month of Manufacture *: </label>
                                                 <select name="manafacturer_m" class="select2 ">
@@ -769,45 +773,45 @@ $taxableIncome -= $mortgageRelief + $insuranceRelief + $homeOwnershipRelief;
          // Import duty calculation for Motor Cycle
         // Retrieve form input values
         $motorCyclePrice = floatval(str_replace(',', '', $_POST['motor_cycle_price']));
-        $manufacturingM = $_POST['manufacturing_month'];
-        $manufacturingY = $_POST['manufacturing_year'];
-        $manufacturer = $_POST['manufacturer'];
-        $bodyT = $_POST['body_type'];
-        $vehicleM = $_POST['vehicle_model'];
-        $v = $_POST['vehicle_weight'];
+        $manufacturingM = $_POST['manufacturing_m'];
+        $manufacturingY = $_POST['manufacturing_y'];
+        $manufacturer_c = $_POST['manufacturer_c'];
+        $bodyT = $_POST['body_t'];
+        $vehicleM = $_POST['motor_model'];
+        $motor_weight = $_POST['motor_weight'];
     
         // Perform import duty calculation logic
         // KRA provides the current Retail Selling Price (CRSP) for the vehicle
-        $crsp = $vehiclePrice;
+        $motorcrsp = $motorCyclePrice;
     
         // Apply depreciation to get Customs Value
-        $customsValue = $crsp * 0.85;
+        $motorcustomsValue = $motorcrsp * 0.85;
     
         // Calculate Import Duty (35% of Customs Value)
-        $importDuty = $customsValue * 0.35;
+        $motorimportDuty = $motorcustomsValue * 0.35;
     
         // Calculate Excise Duty (20% of Customs Value + Import Duty)
-        $exciseDuty = ($customsValue + $importDuty) * 0.20;
+        $motorexciseDuty = ($motorcustomsValue + $motorimportDuty) * 0.20;
     
         // Calculate VAT (16% of Customs Value + Import Duty + Excise Duty)
-        $vat = ($customsValue + $importDuty + $exciseDuty) * 0.16;
+        $motorvat = ($motorcustomsValue + $motorimportDuty + $motorexciseDuty) * 0.16;
     
         // Calculate IDF Fee (3.5% of Customs Value)
-        $idfFee = $customsValue * 0.035;
+        $motoridfFee = $motorcustomsValue * 0.035;
     
         // Calculate RDL Fee (2% of Customs Value)
-        $rdlFee = $customsValue * 0.02;
+        $motor_rdlFee = $motorcustomsValue * 0.02;
     
         // Display results in a table
         echo "<table>";
         echo "<tr><th>Description</th><th>Amount</th></tr>";
-        echo "<tr><td>CRSP Value</td><td>Kes $vehiclePrice</td></tr>";
-        echo "<tr><td>Customs Value</td><td>Kes " . number_format($customsValue, 2) . "</td></tr>";
-        echo "<tr><td>Import Duty</td><td>Kes " . number_format($importDuty, 2) . "</td></tr>";
-        echo "<tr><td>Excise Duty</td><td>Kes " . number_format($exciseDuty, 2) . "</td></tr>";
-        echo "<tr><td>VAT</td><td>Kes " . number_format($vat, 2) . "</td></tr>";
-        echo "<tr><td>IDF Fee</td><td>Kes " . number_format($idfFee, 2) . "</td></tr>";
-        echo "<tr><td>RDL Fee</td><td>Kes " . number_format($rdlFee, 2) . "</td></tr>";
+        echo "<tr><td>CRSP Value</td><td>Kes $motorCyclePrice</td></tr>";
+        echo "<tr><td>Customs Value</td><td>Kes " . number_format($motorcustomsValue, 2) . "</td></tr>";
+        echo "<tr><td>Import Duty</td><td>Kes " . number_format($motorimportDuty, 2) . "</td></tr>";
+        echo "<tr><td>Excise Duty</td><td>Kes " . number_format($motorexciseDuty, 2) . "</td></tr>";
+        echo "<tr><td>VAT</td><td>Kes " . number_format($motorvat, 2) . "</td></tr>";
+        echo "<tr><td>IDF Fee</td><td>Kes " . number_format($motoridfFee, 2) . "</td></tr>";
+        echo "<tr><td>RDL Fee</td><td>Kes " . number_format($motor_rdlFee, 2) . "</td></tr>";
         echo "</tr>";
          echo "<td>How Is Car Duty Calculated In Kenya?</td>";
          echo "<td>The Current Retail Selling Price (CRSP) of your vehicle is provided by the KRA.

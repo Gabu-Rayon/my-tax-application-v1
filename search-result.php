@@ -46,7 +46,7 @@ foreach ($result as $row) {
                         ?>
 
                         <?php
-                        /* ===================== Pagination Code Starts ================== */
+                        /* ===================== Pagination Code Starts Here ================== */
                         $adjacents = 5;
                         $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? AND p_name LIKE ?");
                         $statement->execute(array(1, $search_text));

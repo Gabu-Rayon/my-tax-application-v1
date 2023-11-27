@@ -129,7 +129,7 @@ foreach ($result as $row) {
                                 $pagination .= "<span class=\"disabled\">next &#187;</span>";
                             $pagination .= "</div>\n";
                         }
-                        /* ===================== Pagination Code Ends ================== */
+                        /* ===================== Pagination Code Ends Here ================== */
                         ?>
 
                         <?php

@@ -61,12 +61,11 @@ foreach ($result as $row) {
 										// Getting the url of the verification link
 										$verification_url = BASE_URL . 'verify.php?email=' . $to . '&key=' . $key;
 
-										$message = '
-Thanks for your interest to subscribe our newsletter!<br><br>
-Please click this link to confirm your subscription:
-					' . $verification_url . '<br><br>
-This link will be active only for 24 hours.
-					';
+										$message = 'Thanks for your interest to subscribe our newsletter!<br><br>
+                                              Please click this link to confirm your subscription:
+                                              					' . $verification_url . '<br><br>
+                                                                This link will be active only for 24 hours.
+                                                                					';
 
 										$headers = 'From: ' . $contact_email . "\r\n" .
 											'Reply-To: ' . $contact_email . "\r\n" .

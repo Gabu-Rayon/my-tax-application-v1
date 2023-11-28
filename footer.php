@@ -214,7 +214,7 @@ function stripeResponseHandler(status, response) {
     }
 }
 
-// Initialize Quagga for barcode scanning
+// Code For Initialize Quagga for barcode scanning
 Quagga.init({
     inputStream: {
         name: "Live",

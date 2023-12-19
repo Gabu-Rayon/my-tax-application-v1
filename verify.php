@@ -5,7 +5,7 @@ if ( (!isset($_REQUEST['email'])) || (isset($_REQUEST['token'])) )
 {
     $var = 1;
 
-    // check if the token is correct and match with database.
+    // check if the token is correct and match with the  database.
     $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=?");
     $statement->execute(array($_REQUEST['email']));
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
